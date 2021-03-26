@@ -15,6 +15,8 @@
 		BF29E87E260DD94A0084C699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */; };
 		BF29E889260DD94A0084C699 /* StewartWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E888260DD94A0084C699 /* StewartWeatherTests.swift */; };
 		BF29E894260DD94A0084C699 /* StewartWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */; };
+		BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A4260DD9A90084C699 /* APIService.swift */; };
+		BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		BF29E88F260DD94A0084C699 /* StewartWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StewartWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StewartWeatherUITests.swift; sourceTree = "<group>"; };
 		BF29E895260DD94A0084C699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF29E8A4260DD9A90084C699 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BF29E8A9260DD9F30084C699 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				BF29E871260DD9470084C699 /* AppDelegate.swift */,
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
 				BF29E875260DD9470084C699 /* ContentView.swift */,
+				BF29E8A9260DD9F30084C699 /* Forecast.swift */,
+				BF29E8A4260DD9A90084C699 /* APIService.swift */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
 				BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */,
 				BF29E87F260DD94A0084C699 /* Info.plist */,
@@ -268,7 +274,9 @@
 			files = (
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
+				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
+				BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
