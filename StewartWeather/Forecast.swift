@@ -11,8 +11,6 @@ struct WeatherData: Decodable {
     var daily: [Daily]
 }
 
-
-
 struct Daily: Decodable {
     var dt: Date
     var temp: Temp

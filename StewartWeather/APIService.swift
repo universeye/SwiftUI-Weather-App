@@ -10,7 +10,7 @@ public class APIService {
     public func getJSON<T: Decodable>(urlString: String,
                                       dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                                       keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys ,
-                                      completion: @escaping (Result<T, APIError>) -> Void) {
+                                      completion: @escaping (Result<T, APIError>) -> Void){
         
         guard let url = URL(string: urlString) else {
             completion(.failure(.error("Error: Invalid URL")))

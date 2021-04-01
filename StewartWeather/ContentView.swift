@@ -21,8 +21,9 @@ struct ContentView: View {
                         .padding()
                     
                     Button(action: {
-                        //getWeatherForecast(for: location)
-                        getWeatherWithString(for: location)
+                        forecastContainer.forecastData = []
+                        getWeatherForecast(for: location)
+                        
                         
                     }, label: {
                         SFSymbols.magnifier
@@ -57,10 +58,35 @@ struct ContentView: View {
         
         apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&q=\(location)") { (result: Result<WeatherData, APIService.APIError>) in
             
-            let weather = ForecastManager(high: 40, low: 403, clouds: 13, pop: 43, humidity: 4, description: "fdefieh")
-            DispatchQueue.main.async {
-                forecastContainer.forecastData.append(weather)
+            switch result {
+            
+            case .success(let forecast):
+                for day in forecast.daily {
+                    let everydayForecast =  [ForecastManager(
+                                                high: Int(day.temp.max),
+                                                low: Int(day.temp.min),
+                                                clouds: day.clouds,
+                                                pop: day.pop,
+                                                humidity: day.humidity,
+                                                description: day.weather[0].description)]
+                    
+                    DispatchQueue.main.async {
+                        forecastContainer.forecastData.append(contentsOf: everydayForecast)
+                    }
+                }
+            case .failure(let apiError):
+                switch apiError {
+                case .error(let errorString):
+                    print(errorString)
+                }
             }
+            
+            
+            
+//            let weather = ForecastManager(high: 40, low: 403, clouds: 13, pop: 43, humidity: 4, description: "fdefieh")
+//            DispatchQueue.main.async {
+//                forecastContainer.forecastData.append(weather)
+//            }
         }
     }
     
@@ -78,6 +104,8 @@ struct ContentView: View {
             if let lat = placemarks?.first?.location?.coordinate.latitude,
                let lon = placemarks?.first?.location?.coordinate.longitude {
                 apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)",
+                                   
+                                   //22.996153, 120.234464
                                    dateDecodingStrategy: .secondsSince1970) { (result: Result<WeatherData, APIService.APIError>) in
                     
                     
@@ -86,6 +114,17 @@ struct ContentView: View {
                     case .success(let forecast):
                         //print(forecast.daily[0].temp.max)
                         for day in forecast.daily {
+                            let everydayForecast =  [ForecastManager(
+                                                        high: Int(day.temp.max),
+                                                        low: Int(day.temp.min),
+                                                        clouds: day.clouds,
+                                                        pop: day.pop,
+                                                        humidity: day.humidity,
+                                                        description: day.weather[0].description)]
+                            
+                            DispatchQueue.main.async {
+                                forecastContainer.forecastData.append(contentsOf: everydayForecast)
+                            }
                             
                             print("Get Weather for \(location)")
                             print("===============================")
