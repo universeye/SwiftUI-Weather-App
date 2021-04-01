@@ -10,6 +10,8 @@ import CoreLocation
 
 struct ContentView: View {
     @State private var location: String = ""
+    @StateObject var forecastContainer = ForecstContainer()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -19,12 +21,28 @@ struct ContentView: View {
                         .padding()
                     
                     Button(action: {
-                        getWeatherForecast(for: location)
+                        //getWeatherForecast(for: location)
+                        getWeatherWithString(for: location)
+                        
                     }, label: {
-                        Image(systemName: "magnifyingglass.circle.fill")
+                        SFSymbols.magnifier
                             .font(.title3)
                     })
+                } //HStack
+                Divider()
+                
+                List(forecastContainer.forecastData) { data in
+                    HStack {
+                        SFSymbols.load
+                        VStack {
+                            Text(data.description).bold()
+                            Text("Clouds: \(data.clouds)")
+                        }
+                    }
+                    
                 }
+                .listStyle(PlainListStyle())
+                
                 Spacer()
             }
             .padding(.horizontal)
@@ -33,9 +51,23 @@ struct ContentView: View {
     }
     
     
+    func getWeatherWithString(for location: String) {
+        
+        let apiService = APIService.shared
+        
+        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&q=\(location)") { (result: Result<WeatherData, APIService.APIError>) in
+            
+            let weather = ForecastManager(high: 40, low: 403, clouds: 13, pop: 43, humidity: 4, description: "fdefieh")
+            DispatchQueue.main.async {
+                forecastContainer.forecastData.append(weather)
+            }
+        }
+    }
+    
     func getWeatherForecast(for location: String) {
         let apiService = APIService.shared
         let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "E, MM, d"
 
         CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
@@ -54,6 +86,7 @@ struct ContentView: View {
                     case .success(let forecast):
                         //print(forecast.daily[0].temp.max)
                         for day in forecast.daily {
+                            
                             print("Get Weather for \(location)")
                             print("===============================")
                             print(dateFormatter.string(from: day.dt))
@@ -64,7 +97,14 @@ struct ContentView: View {
                             print("Clouds: \(day.clouds)")
                             print("pop: \(day.pop)")
                             print("iconURL: \(day.weather[0].weatherIconUrl)")
+                            
+                            
+                            
                         }
+                        
+                      
+                        
+                        
                     case .failure(let apiError):
                         switch apiError {
                         case .error(let errorString):
@@ -74,6 +114,7 @@ struct ContentView: View {
                 }
             }
         }
+        
     }
 }
 

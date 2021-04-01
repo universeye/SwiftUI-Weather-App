@@ -17,6 +17,8 @@
 		BF29E894260DD94A0084C699 /* StewartWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */; };
 		BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A4260DD9A90084C699 /* APIService.swift */; };
 		BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* Forecast.swift */; };
+		BFE12CC9261589F70071AB7E /* ForecastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CC8261589F70071AB7E /* ForecastManager.swift */; };
+		BFE12CCE2615ADAF0071AB7E /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CCD2615ADAF0071AB7E /* SFSymbols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BF29E895260DD94A0084C699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF29E8A4260DD9A90084C699 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BF29E8A9260DD9F30084C699 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		BFE12CC8261589F70071AB7E /* ForecastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastManager.swift; sourceTree = "<group>"; };
+		BFE12CCD2615ADAF0071AB7E /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +110,9 @@
 				BF29E871260DD9470084C699 /* AppDelegate.swift */,
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
 				BF29E875260DD9470084C699 /* ContentView.swift */,
+				BFE12CCD2615ADAF0071AB7E /* SFSymbols.swift */,
 				BF29E8A9260DD9F30084C699 /* Forecast.swift */,
+				BFE12CC8261589F70071AB7E /* ForecastManager.swift */,
 				BF29E8A4260DD9A90084C699 /* APIService.swift */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
 				BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */,
@@ -272,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE12CC9261589F70071AB7E /* ForecastManager.swift in Sources */,
+				BFE12CCE2615ADAF0071AB7E /* SFSymbols.swift in Sources */,
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
