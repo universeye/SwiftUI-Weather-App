@@ -32,11 +32,11 @@ struct ContentView: View {
                 } //HStack
                 Divider()
                 
-                List(ForecastManager.dummyData) { data in
-                    VStack {
-                        //Text(data.date)
+                List(forecastContainer.forecastData) { data in
+                    VStack (alignment: .leading) {
+                        Text(data.date!)
                         HStack {
-                            SFSymbols.load.font(.title)
+                            SFSymbols.load.font(.title).background(Color.green).cornerRadius(10)
                             VStack (alignment: .leading) {
                                 Text(data.description).bold()
                                 Text("High: \(data.high) °C, Low: \(data.low)")
