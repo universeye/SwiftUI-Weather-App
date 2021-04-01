@@ -9,14 +9,18 @@ import Foundation
 
 struct ForecastManager: Identifiable {
     var id = UUID()
-    
-    //var date = String
+    var date: String?
     var high: Int
     var low: Int
     var clouds: Int
     var pop: Double
     var humidity: Int
     var description: String
+    
+    
+    
+    //dt": 1617249600
+    //dt": 1617336000
 }
 
 class ForecstContainer: ObservableObject {
@@ -25,8 +29,10 @@ class ForecstContainer: ObservableObject {
 }
 
 extension ForecastManager {
+    
+
+
     static var dummyData: [ForecastManager] = [ForecastManager(high: 40, low: 10, clouds: 4, pop: 4.5, humidity: 59, description: "Dummy 1"),
                                                ForecastManager(high: 40, low: 10, clouds: 7, pop: 4.5, humidity: 59, description: "Dummy 2")]
-    
-    static var realData: [ForecastManager] = []
+
 }

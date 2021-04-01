@@ -32,12 +32,19 @@ struct ContentView: View {
                 } //HStack
                 Divider()
                 
-                List(forecastContainer.forecastData) { data in
-                    HStack {
-                        SFSymbols.load
-                        VStack {
-                            Text(data.description).bold()
-                            Text("Clouds: \(data.clouds)")
+                List(ForecastManager.dummyData) { data in
+                    VStack {
+                        //Text(data.date)
+                        HStack {
+                            SFSymbols.load.font(.title)
+                            VStack (alignment: .leading) {
+                                Text(data.description).bold()
+                                Text("High: \(data.high) °C, Low: \(data.low)")
+                                Text("Clouds: \(data.clouds)")
+                                Text("POP: \(data.pop)")
+                                Text("Humidity: \(data.humidity)")
+                            }
+                            .padding()
                         }
                     }
                     
@@ -48,45 +55,6 @@ struct ContentView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Mobile Weather")
-        }
-    }
-    
-    
-    func getWeatherWithString(for location: String) {
-        
-        let apiService = APIService.shared
-        
-        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&q=\(location)") { (result: Result<WeatherData, APIService.APIError>) in
-            
-            switch result {
-            
-            case .success(let forecast):
-                for day in forecast.daily {
-                    let everydayForecast =  [ForecastManager(
-                                                high: Int(day.temp.max),
-                                                low: Int(day.temp.min),
-                                                clouds: day.clouds,
-                                                pop: day.pop,
-                                                humidity: day.humidity,
-                                                description: day.weather[0].description)]
-                    
-                    DispatchQueue.main.async {
-                        forecastContainer.forecastData.append(contentsOf: everydayForecast)
-                    }
-                }
-            case .failure(let apiError):
-                switch apiError {
-                case .error(let errorString):
-                    print(errorString)
-                }
-            }
-            
-            
-            
-//            let weather = ForecastManager(high: 40, low: 403, clouds: 13, pop: 43, humidity: 4, description: "fdefieh")
-//            DispatchQueue.main.async {
-//                forecastContainer.forecastData.append(weather)
-//            }
         }
     }
     
@@ -115,6 +83,7 @@ struct ContentView: View {
                         //print(forecast.daily[0].temp.max)
                         for day in forecast.daily {
                             let everydayForecast =  [ForecastManager(
+                                                        date: dateFormatter.string(from: day.dt),
                                                         high: Int(day.temp.max),
                                                         low: Int(day.temp.min),
                                                         clouds: day.clouds,
@@ -136,14 +105,7 @@ struct ContentView: View {
                             print("Clouds: \(day.clouds)")
                             print("pop: \(day.pop)")
                             print("iconURL: \(day.weather[0].weatherIconUrl)")
-                            
-                            
-                            
                         }
-                        
-                      
-                        
-                        
                     case .failure(let apiError):
                         switch apiError {
                         case .error(let errorString):
