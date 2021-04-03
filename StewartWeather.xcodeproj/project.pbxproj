@@ -17,6 +17,7 @@
 		BF29E894260DD94A0084C699 /* StewartWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */; };
 		BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A4260DD9A90084C699 /* APIService.swift */; };
 		BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* Forecast.swift */; };
+		BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE12618FCD80071AB7E /* SFSymbols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BF29E895260DD94A0084C699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF29E8A4260DD9A90084C699 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BF29E8A9260DD9F30084C699 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		BFE12CE12618FCD80071AB7E /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BF29E871260DD9470084C699 /* AppDelegate.swift */,
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
 				BF29E875260DD9470084C699 /* ContentView.swift */,
+				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
 				BF29E8A9260DD9F30084C699 /* Forecast.swift */,
 				BF29E8A4260DD9A90084C699 /* APIService.swift */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
@@ -274,6 +277,7 @@
 			files = (
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
+				BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */,
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
 				BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */,

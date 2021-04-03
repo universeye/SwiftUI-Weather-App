@@ -10,6 +10,9 @@ import CoreLocation
 
 struct ContentView: View {
     @State private var location: String = ""
+    @State var forecast: WeatherData? = nil
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -25,7 +28,14 @@ struct ContentView: View {
                             .font(.title3)
                     })
                 }
-                Spacer()
+                if let forecast = forecast {
+                    //Text(String(forecast.daily[0].temp.max))
+                    HStack {
+                        
+                    }
+                } else {
+                    Spacer()
+                }
             }
             .padding(.horizontal)
             .navigationTitle("Mobile Weather")
@@ -42,7 +52,7 @@ struct ContentView: View {
             if let err = error {
                 print(err)
             }
-            
+
             if let lat = placemarks?.first?.location?.coordinate.latitude,
                let lon = placemarks?.first?.location?.coordinate.longitude {
                 apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)",
@@ -52,19 +62,20 @@ struct ContentView: View {
                     
                     switch result {
                     case .success(let forecast):
+                        self.forecast = forecast
                         //print(forecast.daily[0].temp.max)
-                        for day in forecast.daily {
-                            print("Get Weather for \(location)")
-                            print("===============================")
-                            print(dateFormatter.string(from: day.dt))
-                            print("Max temperature: \(day.temp.max)")
-                            print("Min temperature: \(day.temp.min)")
-                            print("Hum: \(day.humidity)")
-                            print("Des: \(day.weather[0].description)")
-                            print("Clouds: \(day.clouds)")
-                            print("pop: \(day.pop)")
-                            print("iconURL: \(day.weather[0].weatherIconUrl)")
-                        }
+//                        for day in forecast.daily {
+//                            print("Get Weather for \(location)")
+//                            print("===============================")
+//                            print(dateFormatter.string(from: day.dt))
+//                            print("Max temperature: \(day.temp.max)")
+//                            print("Min temperature: \(day.temp.min)")
+//                            print("Hum: \(day.humidity)")
+//                            print("Des: \(day.weather[0].description)")
+//                            print("Clouds: \(day.clouds)")
+//                            print("pop: \(day.pop)")
+//                            print("iconURL: \(day.weather[0].weatherIconUrl)")
+//                        }
                     case .failure(let apiError):
                         switch apiError {
                         case .error(let errorString):
