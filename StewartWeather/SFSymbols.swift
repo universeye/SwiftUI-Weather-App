@@ -10,7 +10,9 @@ import SwiftUI
 
 enum SFSymbols: String, View {
     
-    case load = ""
+    case magnifier = "magnifyingglass.circle.fill"
+    case load = "slowmo"
+    case hourGlass = "hourglass"
     
     var body: some View {
         Image(systemName: self.rawValue)

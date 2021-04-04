@@ -12,6 +12,11 @@ struct ContentView: View {
     @State private var location: String = ""
     @State var forecast: WeatherData? = nil
     
+    let dateFormatter = DateFormatter()
+    init() { //when the content view is initialized, the assigns this string to the date formatter property of the day formatter
+        dateFormatter.dateFormat = "E, MM, d"
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -24,14 +29,41 @@ struct ContentView: View {
                     Button(action: {
                         getWeatherForecast(for: location)
                     }, label: {
-                        Image(systemName: "magnifyingglass.circle.fill")
+                        SFSymbols.magnifier
                             .font(.title3)
                     })
                 }
                 if let forecast = forecast {
                     //Text(String(forecast.daily[0].temp.max))
-                    HStack {
-                        
+                    
+                    VStack(alignment:.leading) {
+                        //List(0..<forecast.daily.count) { index in
+                        List(forecast.daily, id: \.dt) { day in
+                            VStack(alignment:.leading) {
+                                Text(dateFormatter.string(from: day.dt)).bold()
+                                HStack {
+                                    SFSymbols.load
+                                        .font(.title)
+                                        .frame(width: 50, height: 50)
+                                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.green))
+                                    VStack (alignment:.leading) {
+                                        Text("\(day.weather[0].description.capitalized)")
+                                        HStack {
+                                            Text("High: \(day.temp.max, specifier: "%.0f")")
+                                            Text("Low: \(day.temp.min, specifier: "%.0f")")
+                                        }
+                                        
+                                        HStack {
+                                            Text("Clouds: \(day.clouds)" + ",")
+                                            Text("POP: \(day.pop)")
+                                        }
+                                        
+                                        Text("Humidity: \(day.humidity)")
+                                    }
+                                }
+                            }
+                        }
+                        .listStyle(PlainListStyle())
                     }
                 } else {
                     Spacer()
@@ -45,9 +77,7 @@ struct ContentView: View {
     
     func getWeatherForecast(for location: String) {
         let apiService = APIService.shared
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, MM, d"
-
+        
         CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
             if let err = error {
                 print(err)
@@ -63,19 +93,6 @@ struct ContentView: View {
                     switch result {
                     case .success(let forecast):
                         self.forecast = forecast
-                        //print(forecast.daily[0].temp.max)
-//                        for day in forecast.daily {
-//                            print("Get Weather for \(location)")
-//                            print("===============================")
-//                            print(dateFormatter.string(from: day.dt))
-//                            print("Max temperature: \(day.temp.max)")
-//                            print("Min temperature: \(day.temp.min)")
-//                            print("Hum: \(day.humidity)")
-//                            print("Des: \(day.weather[0].description)")
-//                            print("Clouds: \(day.clouds)")
-//                            print("pop: \(day.pop)")
-//                            print("iconURL: \(day.weather[0].weatherIconUrl)")
-//                        }
                     case .failure(let apiError):
                         switch apiError {
                         case .error(let errorString):
