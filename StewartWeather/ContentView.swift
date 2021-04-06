@@ -34,7 +34,6 @@ struct ContentView: View {
                     })
                 }
                 if let forecast = forecast {
-                    //Text(String(forecast.daily[0].temp.max))
                     
                     VStack(alignment:.leading) {
                         //List(0..<forecast.daily.count) { index in
@@ -47,7 +46,8 @@ struct ContentView: View {
                                         .frame(width: 50, height: 50)
                                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.green))
                                     VStack (alignment:.leading) {
-                                        Text("\(day.weather[0].description.capitalized)")
+                                        //Text("\(day.weather[0].description.capitalized)")
+                                        Text("\(ForecastViewModel(forecast: day).overview)")
                                         HStack {
                                             Text("High: \(day.temp.max, specifier: "%.0f")")
                                             Text("Low: \(day.temp.min, specifier: "%.0f")")
