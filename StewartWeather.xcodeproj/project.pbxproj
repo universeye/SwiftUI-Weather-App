@@ -17,6 +17,7 @@
 		BF29E894260DD94A0084C699 /* StewartWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */; };
 		BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A4260DD9A90084C699 /* APIService.swift */; };
 		BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* Forecast.swift */; };
+		BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */; };
 		BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE12618FCD80071AB7E /* SFSymbols.swift */; };
 		BFE12CE82619A2AD0071AB7E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		BF29E895260DD94A0084C699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF29E8A4260DD9A90084C699 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BF29E8A9260DD9F30084C699 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastListViewModel.swift; sourceTree = "<group>"; };
 		BFE12CE12618FCD80071AB7E /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
 				BF29E875260DD9470084C699 /* ContentView.swift */,
 				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
+				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
 				BFE12CE62619A2930071AB7E /* View */,
 				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
 				BF29E8A9260DD9F30084C699 /* Forecast.swift */,
@@ -291,6 +294,7 @@
 				BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */,
 				BFE12CE82619A2AD0071AB7E /* ForecastViewModel.swift in Sources */,
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
+				BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
 				BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */,
 			);
