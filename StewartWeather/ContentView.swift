@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @State private var location: String = ""
-//    @State var forecast: WeatherData? = nil
+
     @StateObject private var forecastListVM = ForecastListViewModel()
-//    let dateFormatter = DateFormatter()
-//    init() { //when the content view is initialized, the assigns this string to the date formatter property of the day formatter
-//        dateFormatter.dateFormat = "E, MM, d"
-//    }
+
     
     
     var body: some View {
         NavigationView {
             VStack {
+                Picker(selection: $forecastListVM.system, label: Text("System")) {
+                    Text("°C").tag(0)
+                    Text("°F").tag(1)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .frame(width: 100)
+                .padding(.vertical)
                 HStack {
                     TextField("Enter Location", text: $forecastListVM.location)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -51,12 +54,10 @@ struct ContentView: View {
                                             Text(day.high)
                                             Text(day.low)
                                         }
-
                                         HStack {
                                             Text(day.clouds)
                                             Text(day.pop)
                                         }
-
                                         Text(day.humidity)
                                     }
                                 }

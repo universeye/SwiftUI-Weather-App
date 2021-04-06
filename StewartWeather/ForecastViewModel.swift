@@ -56,4 +56,10 @@ struct ForecastViewModel {
     var humidity: String {
         return "Humidity: \(forecast.humidity)%"
     }
+
+
 }
+
+
+
+

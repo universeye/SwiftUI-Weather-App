@@ -12,6 +12,7 @@ class ForecastListViewModel: ObservableObject {
     
     @Published var forecasts: [ForecastViewModel] = []
     var location: String = ""
+    var system: Int = 0
     
     func getWeatherForecast() {
         let apiService = APIService.shared
@@ -31,7 +32,10 @@ class ForecastListViewModel: ObservableObject {
                     switch result {
                     case .success(let forecast):
                         DispatchQueue.main.async {
+                            print(forecast.daily)
                             self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0) }
+                            print(self.forecasts)
+                            print(self.forecasts[0].day)
                         }
                        
                     case .failure(let apiError):
