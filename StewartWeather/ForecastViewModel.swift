@@ -12,12 +12,15 @@ struct ForecastViewModel {
     let forecast: Daily
     var system: Int
     
+    //MARK: - Date Formatter
+
     private static var dateFormatter: DateFormatter{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MM, d"
         return dateFormatter
     }
     
+    //MARK: - Number Formatter
     private static var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 1
@@ -30,6 +33,8 @@ struct ForecastViewModel {
         return numberFormatter
     }
     
+    //MARK: - Celsius Converter
+    
     func convert(temp: Double) -> Double{
         let celsius = temp
         if system == 0 {
@@ -39,6 +44,9 @@ struct ForecastViewModel {
         }
     }
     
+    
+    //MARK: - Computed Properties
+
     var day: String {
         return Self.dateFormatter.string(from: forecast.dt)
     }

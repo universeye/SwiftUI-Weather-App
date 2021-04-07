@@ -13,6 +13,7 @@ enum SFSymbols: String, View {
     case magnifier = "magnifyingglass.circle.fill"
     case load = "slowmo"
     case hourGlass = "hourglass"
+    case xmark = "xmark.circle"
     
     var body: some View {
         Image(systemName: self.rawValue)

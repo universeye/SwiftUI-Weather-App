@@ -17,17 +17,41 @@ struct ContentView: View {
             NavigationView {
                     VStack {
                         HStack {
-                            TextField("Enter Location", text: $forecastListVM.location)
+                            TextField("Enter Location", text: $forecastListVM.location,
+                                      onCommit: {
+                                      forecastListVM.getWeatherForecast()
+                                      })
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding()
+                                
+                                .overlay ( //delete textField
+                                    Button(action: {
+                                        forecastListVM.location = ""
+                                        forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
+                                    }) {
+                                        SFSymbols.xmark
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.horizontal),alignment: .trailing
+                                )
                             
+                            
+                            //Search Button
                             Button(action: {
-                                forecastListVM.getWeatherForecast()
+                                if forecastListVM.location.isEmpty {
+                                    forecastListVM.appError2 = AppError2(errorString: "Please enter a city")
+                                    forecastListVM.getWeatherForecast()
+//                                    print(forecastListVM.location.isEmpty)
+//                                    print("forecastListVM.location.isEmpty")
+                                } else {
+                                    forecastListVM.getWeatherForecast()
+                                }
                                 
                             }, label: {
                                 SFSymbols.magnifier
-                                    .font(.title3)
+                                    .font(.title2)
                             })
+                        
+                            
                         }
                         
                         Picker(selection: $forecastListVM.system, label: Text("System")) {
@@ -55,6 +79,7 @@ struct ContentView: View {
                                         VStack (alignment:.leading) {
                                             //Text("\(day.weather[0].description.capitalized)")
                                             Text(day.overview)
+                                                .font(.title2)
                                             HStack {
                                                 Text(day.high)
                                                 Text(day.low)
@@ -73,7 +98,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal)
                     .navigationTitle("Mobile Weather")
-                    .alert(item: $forecastListVM.appError) { appAlert in
+                    .alert(item: $forecastListVM.appError2) { appAlert in
                         Alert(title: Text("Alert"),
                               message: Text(
                                 """
@@ -82,6 +107,7 @@ struct ContentView: View {
                                 """
                               ))
                 }
+                    
             }
             if forecastListVM.isLoading {
                 LoadingView()
