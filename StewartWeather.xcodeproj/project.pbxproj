@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,8 @@
 		BF29E889260DD94A0084C699 /* StewartWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E888260DD94A0084C699 /* StewartWeatherTests.swift */; };
 		BF29E894260DD94A0084C699 /* StewartWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */; };
 		BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A4260DD9A90084C699 /* APIService.swift */; };
-		BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* Forecast.swift */; };
+		BF29E8AA260DD9F30084C699 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E8A9260DD9F30084C699 /* WeatherData.swift */; };
+		BF3577EF261D891C00F445E9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF3577EE261D891C00F445E9 /* SDWebImageSwiftUI */; };
 		BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */; };
 		BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE12618FCD80071AB7E /* SFSymbols.swift */; };
 		BFE12CE82619A2AD0071AB7E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */; };
@@ -55,7 +56,7 @@
 		BF29E893260DD94A0084C699 /* StewartWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StewartWeatherUITests.swift; sourceTree = "<group>"; };
 		BF29E895260DD94A0084C699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF29E8A4260DD9A90084C699 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		BF29E8A9260DD9F30084C699 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		BF29E8A9260DD9F30084C699 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastListViewModel.swift; sourceTree = "<group>"; };
 		BFE12CE12618FCD80071AB7E /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3577EF261D891C00F445E9 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,12 +113,11 @@
 			children = (
 				BF29E871260DD9470084C699 /* AppDelegate.swift */,
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
-				BF29E875260DD9470084C699 /* ContentView.swift */,
+				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
 				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
 				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
 				BFE12CE62619A2930071AB7E /* View */,
-				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
-				BF29E8A9260DD9F30084C699 /* Forecast.swift */,
+				BF29E8A9260DD9F30084C699 /* WeatherData.swift */,
 				BF29E8A4260DD9A90084C699 /* APIService.swift */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
 				BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */,
@@ -155,6 +156,7 @@
 		BFE12CE62619A2930071AB7E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF29E875260DD9470084C699 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +177,9 @@
 			dependencies = (
 			);
 			name = StewartWeather;
+			packageProductDependencies = (
+				BF3577EE261D891C00F445E9 /* SDWebImageSwiftUI */,
+			);
 			productName = StewartWeather;
 			productReference = BF29E86E260DD9470084C699 /* StewartWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -246,6 +251,9 @@
 				Base,
 			);
 			mainGroup = BF29E865260DD9470084C699;
+			packageReferences = (
+				BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = BF29E86F260DD9470084C699 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -296,7 +304,7 @@
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
 				BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
-				BF29E8AA260DD9F30084C699 /* Forecast.swift in Sources */,
+				BF29E8AA260DD9F30084C699 /* WeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +633,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF3577EE261D891C00F445E9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF29E866260DD9470084C699 /* Project object */;
 }
