@@ -10,6 +10,7 @@ import Foundation
 
 struct ForecastViewModel {
     let forecast: Daily
+    var system: Int
     
     private static var dateFormatter: DateFormatter{
         let dateFormatter = DateFormatter()
@@ -19,7 +20,7 @@ struct ForecastViewModel {
     
     private static var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = 0
+        numberFormatter.maximumFractionDigits = 1
         return numberFormatter
     }
     
@@ -27,6 +28,15 @@ struct ForecastViewModel {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .percent
         return numberFormatter
+    }
+    
+    func convert(temp: Double) -> Double{
+        let celsius = temp
+        if system == 0 {
+            return celsius
+        } else {
+            return celsius * 9 / 5 + 32
+        }
     }
     
     var day: String {
@@ -38,11 +48,11 @@ struct ForecastViewModel {
     }
     
     var high: String {
-        return "H: \(Self.numberFormatter.string(for: forecast.temp.max) ?? "0")°"
+        return "H: \(Self.numberFormatter.string(for: convert(temp: forecast.temp.max)) ?? "0")°"
     }
     
     var low: String {
-        return "L: \(Self.numberFormatter.string(for: forecast.temp.min) ?? "0")°"
+        return "L: \(Self.numberFormatter.string(for: convert(temp: forecast.temp.min)) ?? "0")°"
     }
     
     var pop : String {
@@ -50,13 +60,17 @@ struct ForecastViewModel {
     }
     
     var clouds: String {
-        return "☁️\(forecast.clouds)%"
+        return "☁️ \(forecast.clouds)%"
     }
     
     var humidity: String {
         return "Humidity: \(forecast.humidity)%"
     }
-
+    
+    var weatherIconUrl: URL {
+        let weatherIconUrlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
+        return URL(string: weatherIconUrlString)!
+    }
 
 }
 
