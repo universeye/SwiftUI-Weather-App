@@ -25,6 +25,7 @@
 		BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */; };
 		BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */; };
 		BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5DD261EF01300F3889A /* ListingView.swift */; };
+		BFB0A5E3261EF28E00F3889A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5E2261EF28E00F3889A /* LocationManager.swift */; };
 		BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE12618FCD80071AB7E /* SFSymbols.swift */; };
 		BFE12CE82619A2AD0071AB7E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDemo.swift; sourceTree = "<group>"; };
 		BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCombine.swift; sourceTree = "<group>"; };
 		BFB0A5DD261EF01300F3889A /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
+		BFB0A5E2261EF28E00F3889A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BFE12CE12618FCD80071AB7E /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
 				BF3577F3261DABD400F445E9 /* AppError.swift */,
 				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
+				BFB0A5E2261EF28E00F3889A /* LocationManager.swift */,
 				BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */,
 				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
 				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
@@ -317,6 +320,7 @@
 			files = (
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
+				BFB0A5E3261EF28E00F3889A /* LocationManager.swift in Sources */,
 				BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */,
 				BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */,
 				BF3577F4261DABD400F445E9 /* AppError.swift in Sources */,

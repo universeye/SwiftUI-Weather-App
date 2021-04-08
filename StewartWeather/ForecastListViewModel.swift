@@ -83,11 +83,8 @@ class ForecastListViewModel: ObservableObject {
                         case .success(let forecast):
                             //if success getting data, save it into forecasts array
                             DispatchQueue.main.async {
-                                
                                 self.forecasts = forecast.daily.map { ForecastViewModel(forecast: $0, system: self.system) }
                                 self.isLoading = false
-                                print(self.forecasts)
-                                print(self.forecasts[0].day)
                             }
                             
                         case .failure(let apiError):
@@ -100,6 +97,36 @@ class ForecastListViewModel: ObservableObject {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func getWeatherForecastWithLatLon(lat: CLLocationDegrees, lon: CLLocationDegrees) {
+        forecasts = [] //clear data array
+        isLoading = true //show loading view
+        let apiService = APIServiceCombine.shared
+        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)") { (result: Result<WeatherData, APIServiceCombine.APIError>) in
+            
+            switch result  {
+            
+            case .success(let forecast):
+                DispatchQueue.main.async {
+                    self.forecasts = forecast.daily.map {
+                        ForecastViewModel(forecast: $0, system: self.system)
+                    }
+                    self.isLoading = false
+                    self.location = "current location"
+                    print("success")
+                    print(self.forecasts)
+                }
+            case .failure(let apiError):
+                switch apiError {
+                case .error(let errorString):
+                    self.isLoading = false
+                    self.appError2 = AppError2(errorString: errorString)
                 }
             }
         }
