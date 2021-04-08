@@ -98,6 +98,15 @@ struct ContentView: View {
                     }
                     .padding(.horizontal)
                     .navigationTitle("Mobile Weather")
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                                                
+                                            }, label: {
+                                                SFSymbols.location
+                                            }) // Location Button
+                                        
+                                        
+                    ) //.navigationBarItems
                     .alert(item: $forecastListVM.appError2) { appAlert in
                         Alert(title: Text("Alert"),
                               message: Text(
@@ -109,6 +118,7 @@ struct ContentView: View {
                 }
                     
             }
+            
             if forecastListVM.isLoading {
                 LoadingView()
             }

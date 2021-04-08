@@ -14,6 +14,7 @@ enum SFSymbols: String, View {
     case load = "slowmo"
     case hourGlass = "hourglass"
     case xmark = "xmark.circle"
+    case location = "location.fill"
     
     var body: some View {
         Image(systemName: self.rawValue)
