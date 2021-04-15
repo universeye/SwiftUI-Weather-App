@@ -53,8 +53,8 @@ struct ContentView: View {
                     }
                     
                     
-                    Text("Location Status: \(locationManager.statusString)")
-                    Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
+                    //Text("Location Status: \(locationManager.statusString)")
+                    //Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
                     
                     Picker(selection: $forecastListVM.system, label: Text("System")) {
                         Text("°C").tag(0)

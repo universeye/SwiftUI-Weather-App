@@ -11,6 +11,7 @@ import Combine
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
+    @Published var city: String?
     @Published var latt: CLLocationDegrees?
     @Published var lonn: CLLocationDegrees?
     @Published var locationStatus: CLAuthorizationStatus?
@@ -18,6 +19,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         didSet {
             self.latt = lastLocation?.coordinate.latitude
             self.lonn = lastLocation?.coordinate.longitude
+            
         }
     }
     

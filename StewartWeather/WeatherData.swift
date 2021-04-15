@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherData: Decodable {
+    var timezone: String
     var daily: [Daily]
 }
 

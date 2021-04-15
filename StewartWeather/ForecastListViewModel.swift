@@ -118,7 +118,7 @@ class ForecastListViewModel: ObservableObject {
                         ForecastViewModel(forecast: $0, system: self.system)
                     }
                     self.isLoading = false
-                    self.location = "current location"
+                    self.location = forecast.timezone
                     print("success")
                     print(self.forecasts)
                 }
