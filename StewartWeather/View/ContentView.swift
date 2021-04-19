@@ -11,9 +11,9 @@ import SDWebImageSwiftUI
 struct ContentView: View {
     
     @StateObject private var forecastListVM = ForecastListViewModel()
-    
+    let persistenceController = PersistanceController.shared
     @StateObject var locationManager = LocationManager()
-    
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State var isShowingSheet = false
     
     var body: some View {
@@ -113,7 +113,7 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $isShowingSheet, content: {
-            SearchHistoryView(isShowingSheet: $isShowingSheet)
+            SearchHistoryView(isShowingSheet: $isShowingSheet).environment(\.managedObjectContext, persistenceController.container.viewContext)
         })
     }
 }

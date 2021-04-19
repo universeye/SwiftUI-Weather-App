@@ -51,7 +51,7 @@ class ForecastListViewModel: ObservableObject {
         if location == "" { //if location in textField is empty, clear forecasts array
             forecasts = []
         } else { //otherwise call the api to fetch weather data
-            isLoading = true
+            isLoading = true //show loading view
             let apiService = APIServiceCombine.shared
             
             

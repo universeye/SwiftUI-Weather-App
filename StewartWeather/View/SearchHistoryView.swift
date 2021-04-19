@@ -12,26 +12,54 @@ struct SearchHistoryView: View {
     
     @Binding var isShowingSheet: Bool
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+    @Environment(\.presentationMode) var presentationMode
     @FetchRequest(entity: Items.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)]) var itmes: FetchedResults<Items>
+    
+    @State private var isAlerting = false
+    
+    @State var itemArray = [Items]()
     
     var body: some View {
         NavigationView {
-            List {
-                
+            List (itmes, id:\.self) { item in
+                Text("\(item.city ?? "Unknown")")
             }
             .navigationTitle("Search History")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    
+                    
                     Button(action: {
-                        isShowingSheet = false
+                        isAlerting = true
+                    }, label: {
+                        SFSymbols.add
+                    })
+                    
+                    
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Done")
                             .bold()
                     })
+                    
+                    
                 }
             }
         }
+        .alert(isPresented: $isAlerting, content: {
+            Alert(title: Text("Add Tainan to search history"), message: Text("for real"), primaryButton: .default(Text("add"), action: {
+                
+                let newItem = Items(context: managedObjectContext)
+                newItem.city = "Tainan"
+                self.itemArray.append(newItem)
+                PersistanceController.shared.save()
+                
+               print("added")
+            }), secondaryButton: .default(Text("cancel"), action: {
+               print("cancel")
+            }))
+        })
     }
 }
 

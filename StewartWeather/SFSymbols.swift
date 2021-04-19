@@ -16,6 +16,7 @@ enum SFSymbols: String, View {
     case xmark = "xmark.circle"
     case location = "location.fill"
     case history = "clock.arrow.circlepath"
+    case add = "plus"
     
     var body: some View {
         Image(systemName: self.rawValue)
