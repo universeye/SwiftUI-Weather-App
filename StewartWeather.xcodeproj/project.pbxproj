@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1AFC20262D4A1400881F8D /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC1E262D4A1400881F8D /* Stash.xcdatamodeld */; };
+		BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC24262D59F400881F8D /* PersistanceController.swift */; };
+		BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */; };
 		BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E871260DD9470084C699 /* AppDelegate.swift */; };
 		BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E873260DD9470084C699 /* SceneDelegate.swift */; };
 		BF29E876260DD9470084C699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E875260DD9470084C699 /* ContentView.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF1AFC1F262D4A1400881F8D /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
+		BF1AFC24262D59F400881F8D /* PersistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceController.swift; sourceTree = "<group>"; };
+		BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		BF29E86E260DD9470084C699 /* StewartWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StewartWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF29E871260DD9470084C699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF29E873260DD9470084C699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				BFB0A5E2261EF28E00F3889A /* LocationManager.swift */,
 				BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */,
 				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
+				BF1AFC24262D59F400881F8D /* PersistanceController.swift */,
 				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
 				BFE12CE62619A2930071AB7E /* View */,
 				BF29E8A9260DD9F30084C699 /* WeatherData.swift */,
@@ -140,6 +147,7 @@
 				BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
 				BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */,
+				BF1AFC1E262D4A1400881F8D /* Stash.xcdatamodeld */,
 				BF29E87F260DD94A0084C699 /* Info.plist */,
 				BF29E879260DD94A0084C699 /* Preview Content */,
 			);
@@ -178,6 +186,7 @@
 				BF29E875260DD9470084C699 /* ContentView.swift */,
 				BF3577FB261DB34300F445E9 /* LoadingView.swift */,
 				BFB0A5DD261EF01300F3889A /* ListingView.swift */,
+				BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */,
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
 				BFB0A5E3261EF28E00F3889A /* LocationManager.swift in Sources */,
@@ -331,8 +341,10 @@
 				BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */,
 				BF357801261DCCD600F445E9 /* UIApplication+Extension.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
+				BF1AFC20262D4A1400881F8D /* Stash.xcdatamodeld in Sources */,
 				BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */,
 				BF29E8AA260DD9F30084C699 /* WeatherData.swift in Sources */,
+				BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +692,19 @@
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BF1AFC1E262D4A1400881F8D /* Stash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF1AFC1F262D4A1400881F8D /* Stash.xcdatamodel */,
+			);
+			currentVersion = BF1AFC1F262D4A1400881F8D /* Stash.xcdatamodel */;
+			path = Stash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BF29E866260DD9470084C699 /* Project object */;
 }

@@ -14,6 +14,8 @@ struct ContentView: View {
     
     @StateObject var locationManager = LocationManager()
     
+    @State var isShowingSheet = false
+    
     var body: some View {
         ZStack {
             NavigationView {
@@ -74,17 +76,27 @@ struct ContentView: View {
                 }
                 .padding(.horizontal)
                 .navigationTitle("DZWeather")
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                                            //Get Location Action
-                                            locationManager.getCurrent()
-                                            forecastListVM.getWeatherForecastWithLatLon(lat: locationManager.latt ?? 0, lon: locationManager.lonn ?? 0)
-                                        }, label: {
-                                            SFSymbols.location
-                                        }) // Location Button
-                                    
-                                    
-                ) //.navigationBarItems
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        
+                        
+                        Button(action: {
+                            isShowingSheet.toggle()
+                        }, label: {
+                            SFSymbols.history
+                        }) // Search History Button
+                        
+                        
+                        Button(action: {
+                            //Get Location Action
+                            locationManager.getCurrent()
+                            forecastListVM.getWeatherForecastWithLatLon(lat: locationManager.latt ?? 0, lon: locationManager.lonn ?? 0)
+                        }, label: {
+                            SFSymbols.location
+                        }) // Location Button
+                        
+                    }
+                }
                 .alert(item: $forecastListVM.appError2) { appAlert in
                     Alert(title: Text("Alert"),
                           message: Text(
@@ -94,13 +106,15 @@ struct ContentView: View {
                                 """
                           ))
                 }
-                
             }
             
             if forecastListVM.isLoading {
                 LoadingView()
             }
         }
+        .sheet(isPresented: $isShowingSheet, content: {
+            SearchHistoryView(isShowingSheet: $isShowingSheet)
+        })
     }
 }
 
