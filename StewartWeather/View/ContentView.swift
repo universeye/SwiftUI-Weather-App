@@ -24,6 +24,8 @@ struct ContentView: View {
                     HStack {
                         TextField("Enter Location", text: $forecastListVM.location,
                                   onCommit: {
+                                    //print("foreCastListVM.location is \(forecastListVM.location)")
+                                    saveToCoreData(newCity: forecastListVM.location)
                                     forecastListVM.getWeatherForecast()
                                   })
                             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -47,6 +49,7 @@ struct ContentView: View {
                                 forecastListVM.getWeatherForecast()
                                 //print(forecastListVM.location.isEmpty)
                             } else {
+                                saveToCoreData(newCity: forecastListVM.location)
                                 forecastListVM.getWeatherForecast()
                             }
                         }, label: {
@@ -116,6 +119,12 @@ struct ContentView: View {
         .sheet(isPresented: $isShowingSheet, content: {
             SearchHistoryView(isShowingSheet: $isShowingSheet).environment(\.managedObjectContext, self.managedObjectContext)
         })
+    }
+    
+    func saveToCoreData(newCity: String) {
+        let newItem = Items(context: managedObjectContext)
+        newItem.city = newCity
+        persistenceController.save()
     }
 }
 

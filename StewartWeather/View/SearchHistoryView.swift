@@ -61,8 +61,8 @@ struct SearchHistoryView: View {
             Alert(title: Text("Add Tainan to search history"), message: Text("for real"), primaryButton: .default(Text("add"), action: {
                 
                 let newItem = Items(context: managedObjectContext)
-                newItem.city = "Zhongli"
-                self.itemArray.append(newItem)
+                newItem.city = "New York"
+                //self.itemArray.append(newItem)
                 PersistanceController.shared.save()
                 
                print("added")

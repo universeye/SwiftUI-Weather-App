@@ -19,10 +19,8 @@ class ForecastListViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
     @Published var forecasts: [ForecastViewModel] = []
-    
    // var appError: AppError? = nil
     var appError2: AppError2? = nil
-    
     @AppStorage("location") var storageLocation: String = ""
     @Published var location = ""
     @AppStorage("system") var system: Int = 0 {
@@ -32,7 +30,6 @@ class ForecastListViewModel: ObservableObject {
             }
         }
     }
-    
     
     init() {
         location = storageLocation
@@ -45,12 +42,14 @@ class ForecastListViewModel: ObservableObject {
     //MARK: - Get Weather Forecast Function
     
     func getWeatherForecast() {
-        storageLocation = location
+        storageLocation = location //save location to UserDefault
         UIApplication.shared.endEditing() //dismiss keyboard
         
         if location == "" { //if location in textField is empty, clear forecasts array
             forecasts = []
         } else { //otherwise call the api to fetch weather data
+           
+            
             isLoading = true //show loading view
             let apiService = APIServiceCombine.shared
             
