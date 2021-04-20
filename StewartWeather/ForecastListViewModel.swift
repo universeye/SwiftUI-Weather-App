@@ -15,7 +15,6 @@ class ForecastListViewModel: ObservableObject {
 //        let id = UUID().uuidString
 //        let errorString: String
 //    }
-//
     
     @Published var isLoading: Bool = false
     @Published var forecasts: [ForecastViewModel] = []
@@ -36,16 +35,22 @@ class ForecastListViewModel: ObservableObject {
         getWeatherForecast()
     }
     
-    
+    func updateLocation(locat: String) {
+        self.location = locat
+        print("updated location: \(self.location)")
+    }
     
     
     //MARK: - Get Weather Forecast Function
     
     func getWeatherForecast() {
+        print("getting weather1")
+        print("Location is \(location)")
         storageLocation = location //save location to UserDefault
         UIApplication.shared.endEditing() //dismiss keyboard
         
         if location == "" { //if location in textField is empty, clear forecasts array
+            print("Location is Empty")
             forecasts = []
         } else { //otherwise call the api to fetch weather data
            

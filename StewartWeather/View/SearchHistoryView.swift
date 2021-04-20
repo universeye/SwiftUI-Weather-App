@@ -18,9 +18,9 @@ struct SearchHistoryView: View {
     @FetchRequest(entity: Items.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)]) var itmes: FetchedResults<Items>
     
     @State private var isAlerting = false
-    
     @State var itemArray = [Items]()
     
+    @EnvironmentObject var forecastListVM: ForecastListViewModel
     //MARK: - Body
 
     
@@ -31,7 +31,11 @@ struct SearchHistoryView: View {
                     Text("\(item.city ?? "Unknown")")
                         .frame(maxWidth: .infinity)
                         .onTapGesture {
+                            
                             print(item.city ?? "Unknown2")
+                            forecastListVM.location = item.city!
+                            forecastListVM.getWeatherForecast()
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                 }
                 .onDelete(perform: removeItem)
@@ -48,6 +52,7 @@ struct SearchHistoryView: View {
                     }, label: {
                         SFSymbols.add
                     })
+                    .disabled(true)
                     
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()

@@ -10,13 +10,16 @@ import SDWebImageSwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var forecastListVM = ForecastListViewModel()
-    @StateObject var locationManager = LocationManager()
-    
-    let persistenceController = PersistanceController.shared
+    //MARK: - Properties
+    @EnvironmentObject var forecastListVM: ForecastListViewModel
+    @StateObject private var locationManager = LocationManager()
+    private let persistenceController = PersistanceController.shared
     @Environment(\.managedObjectContext) var managedObjectContext
-    @State var isShowingSheet = false
+    @State private var isShowingSheet = false
+    @State private var cityInHistory = ""
+    @FetchRequest(entity: Items.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)]) var itmes: FetchedResults<Items>
     
+    //MARK: - Body
     var body: some View {
         ZStack {
             NavigationView {
@@ -38,11 +41,8 @@ struct ContentView: View {
                                     SFSymbols.xmark
                                         .foregroundColor(.gray)
                                 }
-                                .padding(.horizontal),alignment: .trailing
-                            )
+                                .padding(.horizontal),alignment: .trailing)
                         
-                        
-                        //Search Button
                         Button(action: {
                             if forecastListVM.location.isEmpty {
                                 forecastListVM.appError2 = AppError2(errorString: "Please enter a city")
@@ -55,13 +55,11 @@ struct ContentView: View {
                         }, label: {
                             SFSymbols.magnifier
                                 .font(.title2)
-                        })
+                        }) //Search Button
                     }
-                    
                     
                     //Text("Location Status: \(locationManager.statusString)")
                     //Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
-                    
                     Picker(selection: $forecastListVM.system, label: Text("System")) {
                         Text("°C").tag(0)
                         Text("°F").tag(1)
@@ -75,6 +73,9 @@ struct ContentView: View {
                         List(forecastListVM.forecasts, id: \.day) { day in
                             ListingView(day: day)
                         }
+                        .onTapGesture {
+                            print("Location in ContentView is \(forecastListVM.location)")
+                        }
                         .listStyle(PlainListStyle())
                     }
                 }
@@ -82,15 +83,11 @@ struct ContentView: View {
                 .navigationTitle("DZWeather")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        
-                        
                         Button(action: {
                             isShowingSheet.toggle()
                         }, label: {
                             SFSymbols.history
                         }) // Search History Button
-                        
-                        
                         Button(action: {
                             //Get Location Action
                             locationManager.getCurrent()
@@ -98,7 +95,6 @@ struct ContentView: View {
                         }, label: {
                             SFSymbols.location
                         }) // Location Button
-                        
                     }
                 }
                 .alert(item: $forecastListVM.appError2) { appAlert in
@@ -111,22 +107,42 @@ struct ContentView: View {
                           ))
                 }
             }
-            
             if forecastListVM.isLoading {
                 LoadingView()
             }
         }
         .sheet(isPresented: $isShowingSheet, content: {
-            SearchHistoryView(isShowingSheet: $isShowingSheet).environment(\.managedObjectContext, self.managedObjectContext)
+            SearchHistoryView(isShowingSheet: $isShowingSheet)
+                .environment(\.managedObjectContext, self.managedObjectContext)
+                .environmentObject(self.forecastListVM)
         })
     }
     
+    //MARK: - Save to CoreData Function
     func saveToCoreData(newCity: String) {
         let newItem = Items(context: managedObjectContext)
-        newItem.city = newCity
-        persistenceController.save()
+        var count = 0
+        if newCity == "" || newCity == "Unknown" {
+            print("empty")
+        } else {
+            for i in 0..<itmes.count {
+                if newCity == itmes[i].city {
+                    count += 1
+                }
+            }
+            
+            if count > 0 {
+                print("already saved this item")
+            } else {
+                newItem.city = newCity
+                persistenceController.save()
+            }
+        }
     }
 }
+
+
+//MARK: - Preview
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
