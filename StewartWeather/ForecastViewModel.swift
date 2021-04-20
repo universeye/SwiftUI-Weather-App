@@ -80,6 +80,15 @@ struct ForecastViewModel {
         return URL(string: weatherIconUrlString)!
     }
 
+    
+    enum ActiveSheet: Identifiable {
+        case searchHistory, setting
+        
+        var id: Int {
+            hashValue
+        }
+    }
+
 }
 
 

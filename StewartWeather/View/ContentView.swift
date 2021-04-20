@@ -5,19 +5,22 @@
 //  Created by Terry Kuo on 2021/3/26.
 //
 
+/// BUG1 : Still adding empty value to CoreData when there is no string in the textfield
+
 import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUIRefresh
 
 struct ContentView: View {
     
     //MARK: - Properties
-    @EnvironmentObject var forecastListVM: ForecastListViewModel
-    @StateObject private var locationManager = LocationManager()
-    private let persistenceController = PersistanceController.shared
+    private let persistenceController = PersistanceController.shared //CoreData
     @Environment(\.managedObjectContext) var managedObjectContext
-    @State private var isShowingSheet = false
-    @State private var cityInHistory = ""
     @FetchRequest(entity: Items.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)]) var itmes: FetchedResults<Items>
+    
+    @EnvironmentObject var forecastListVM: ForecastListViewModel
+    @StateObject private var locationManager = LocationManager()  //Location
+    @State var activeSheet: ForecastViewModel.ActiveSheet? //searchHistory, setting
     
     //MARK: - Body
     var body: some View {
@@ -56,26 +59,16 @@ struct ContentView: View {
                             SFSymbols.magnifier
                                 .font(.title2)
                         }) //Search Button
-                    }
+                    } //TextField
                     
                     //Text("Location Status: \(locationManager.statusString)")
                     //Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
-                    Picker(selection: $forecastListVM.system, label: Text("System")) {
-                        Text("°C").tag(0)
-                        Text("°F").tag(1)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(maxWidth: 320)
-                    .padding(.bottom, 20)
-                    
                     VStack(alignment:.leading) {
                         //List(0..<forecast.daily.count) { index in
                         List(forecastListVM.forecasts, id: \.day) { day in
                             ListingView(day: day)
                         }
-                        .onTapGesture {
-                            print("Location in ContentView is \(forecastListVM.location)")
-                        }
+                        .padding(.bottom, 30)
                         .listStyle(PlainListStyle())
                     }
                 }
@@ -84,7 +77,9 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {
-                            isShowingSheet.toggle()
+                            print("show search history")
+                            activeSheet = .searchHistory
+                            
                         }, label: {
                             SFSymbols.history
                         }) // Search History Button
@@ -95,6 +90,16 @@ struct ContentView: View {
                         }, label: {
                             SFSymbols.location
                         }) // Location Button
+                    }
+                    
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            activeSheet = .setting
+                            
+                        } label: {
+                            SFSymbols.setting
+                        }
+                        
                     }
                 }
                 .alert(item: $forecastListVM.appError2) { appAlert in
@@ -107,15 +112,30 @@ struct ContentView: View {
                           ))
                 }
             }
+            VStack {
+                Spacer()
+                Picker(selection: $forecastListVM.system, label: Text("System")) {
+                    Text("°C").tag(0)
+                    Text("°F").tag(1)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .frame(maxWidth: 320)
+                //.padding(.bottom, 20)
+            } //Picker
             if forecastListVM.isLoading {
                 LoadingView()
             }
         }
-        .sheet(isPresented: $isShowingSheet, content: {
-            SearchHistoryView(isShowingSheet: $isShowingSheet)
-                .environment(\.managedObjectContext, self.managedObjectContext)
-                .environmentObject(self.forecastListVM)
-        })
+        .sheet(item: $activeSheet) { (item) in
+            switch item {
+            case .searchHistory:
+                SearchHistoryView()
+                    .environment(\.managedObjectContext, self.managedObjectContext)
+                    .environmentObject(self.forecastListVM)
+            case .setting:
+                SettingsView()
+            }
+        }
     }
     
     //MARK: - Save to CoreData Function

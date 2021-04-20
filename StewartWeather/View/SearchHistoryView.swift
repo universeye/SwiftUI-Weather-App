@@ -12,13 +12,13 @@ struct SearchHistoryView: View {
     //MARK: - Properties
 
     
-    @Binding var isShowingSheet: Bool
+    //@Binding var isShowingSheet: Bool
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @FetchRequest(entity: Items.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)]) var itmes: FetchedResults<Items>
     
     @State private var isAlerting = false
-    @State var itemArray = [Items]()
+    //@State var itemArray = [Items]()
     
     @EnvironmentObject var forecastListVM: ForecastListViewModel
     //MARK: - Body
@@ -47,7 +47,7 @@ struct SearchHistoryView: View {
                     
                     Button(action: {
                         isAlerting = true
-                        print(itemArray)
+                        
                         print(itmes)
                     }, label: {
                         SFSymbols.add
@@ -92,6 +92,6 @@ struct SearchHistoryView: View {
 
 struct SearchHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHistoryView(isShowingSheet: .constant(false))
+        SearchHistoryView()
     }
 }
