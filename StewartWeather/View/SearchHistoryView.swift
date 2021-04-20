@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchHistoryView: View {
     
+    //MARK: - Properties
+
     
     @Binding var isShowingSheet: Bool
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -19,31 +21,39 @@ struct SearchHistoryView: View {
     
     @State var itemArray = [Items]()
     
+    //MARK: - Body
+
+    
     var body: some View {
         NavigationView {
-            List (itmes, id:\.self) { item in
-                Text("\(item.city ?? "Unknown")")
+            List {
+                ForEach(itmes, id:\.self) { item in
+                    Text("\(item.city ?? "Unknown")")
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            print(item.city ?? "Unknown2")
+                        }
+                }
+                .onDelete(perform: removeItem)
             }
+            
             .navigationTitle("Search History")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     
-                    
                     Button(action: {
                         isAlerting = true
+                        print(itemArray)
+                        print(itmes)
                     }, label: {
                         SFSymbols.add
                     })
-                    
                     
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Done")
-                            .bold()
                     })
-                    
-                    
                 }
             }
         }
@@ -51,7 +61,7 @@ struct SearchHistoryView: View {
             Alert(title: Text("Add Tainan to search history"), message: Text("for real"), primaryButton: .default(Text("add"), action: {
                 
                 let newItem = Items(context: managedObjectContext)
-                newItem.city = "Tainan"
+                newItem.city = "Zhongli"
                 self.itemArray.append(newItem)
                 PersistanceController.shared.save()
                 
@@ -61,7 +71,19 @@ struct SearchHistoryView: View {
             }))
         })
     }
+    
+    func removeItem(at offsets: IndexSet) {
+        for index in offsets {
+            let item = itmes[index]
+            PersistanceController.shared.delete(item)
+        }
+    }
 }
+
+
+
+//MARK: - Preview
+
 
 struct SearchHistoryView_Previews: PreviewProvider {
     static var previews: some View {

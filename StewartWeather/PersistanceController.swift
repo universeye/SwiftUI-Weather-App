@@ -15,6 +15,8 @@ struct PersistanceController {
     
     init() {
         container = NSPersistentContainer(name: "Stash")
+        //print(container.persistentStoreDescriptions.first?.url) //print out database file url
+        
         container.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Error: \(error.localizedDescription)")
@@ -23,7 +25,7 @@ struct PersistanceController {
     }
     
     
-     
+
     func save(completion: @escaping (Error?) -> () = {_ in}) {
         let context = container.viewContext
         if context.hasChanges {
