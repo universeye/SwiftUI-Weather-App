@@ -10,7 +10,6 @@
 		BF1AFC20262D4A1400881F8D /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC1E262D4A1400881F8D /* Stash.xcdatamodeld */; };
 		BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC24262D59F400881F8D /* PersistanceController.swift */; };
 		BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */; };
-		BF1AFC75262ED26000881F8D /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = BF1AFC74262ED26000881F8D /* SwiftUIRefresh */; };
 		BF1AFC7A262EFCC200881F8D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC79262EFCC200881F8D /* SettingsView.swift */; };
 		BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E871260DD9470084C699 /* AppDelegate.swift */; };
 		BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E873260DD9470084C699 /* SceneDelegate.swift */; };
@@ -90,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1AFC75262ED26000881F8D /* SwiftUIRefresh in Frameworks */,
 				BF3577EF261D891C00F445E9 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +212,6 @@
 			name = StewartWeather;
 			packageProductDependencies = (
 				BF3577EE261D891C00F445E9 /* SDWebImageSwiftUI */,
-				BF1AFC74262ED26000881F8D /* SwiftUIRefresh */,
 			);
 			productName = StewartWeather;
 			productReference = BF29E86E260DD9470084C699 /* StewartWeather.app */;
@@ -289,7 +286,6 @@
 			mainGroup = BF29E865260DD9470084C699;
 			packageReferences = (
 				BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				BF1AFC73262ED26000881F8D /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = BF29E86F260DD9470084C699 /* Products */;
 			projectDirPath = "";
@@ -683,14 +679,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF1AFC73262ED26000881F8D /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 		BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -702,11 +690,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF1AFC74262ED26000881F8D /* SwiftUIRefresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF1AFC73262ED26000881F8D /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
-			productName = SwiftUIRefresh;
-		};
 		BF3577EE261D891C00F445E9 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF3577ED261D891C00F445E9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

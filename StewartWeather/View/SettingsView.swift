@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @State private var isShowGreeting = false
+    
     var body: some View {
         NavigationView {
-            List {
-               Text("haha")
+            VStack {
+                Toggle("Show Greeting", isOn: $isShowGreeting)
+                    .padding()
+                List {
+                    if isShowGreeting {
+                        ForEach(0 ..< 5) { index in
+                            Text("haha: \(index)")
+                        }
+                    }
+                }
+                .listStyle(PlainListStyle())
+                .navigationTitle("Settings")
             }
-            .navigationTitle("Settings")
         }
     }
 }
