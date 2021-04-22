@@ -1,5 +1,5 @@
 # DZ Weather App
-SwiftUI, a weather app follow the courses by [Stewart Lynch](https://twitter.com/StewartLynch), with extra feature added myself like get current location.
+SwiftUI, a weather app follow the courses by [Stewart Lynch](https://twitter.com/StewartLynch), with extra feature added myself like get current location, search history using CoreData.
 
 
 # Menu
@@ -13,7 +13,7 @@ SwiftUI, a weather app follow the courses by [Stewart Lynch](https://twitter.com
 
 # Screenshots
 
-<img src= "ReadmeSources/stewartweatherss.png" width = 50% height = 50%>
+<img src= "ReadmeSources/stewartweatherss2.png" width = 50% height = 50%>
 
 # Features
 
@@ -22,15 +22,21 @@ SwiftUI, a weather app follow the courses by [Stewart Lynch](https://twitter.com
 * Error message customizable
 * Dismiss keyboard
 * Customized loading view 
+* TextField search history using CoreData
 
 
 ### To-Do
-* TextField search history using Core data
+* TextField search history using CoreData(done)
 
 
 # Source
 This weather app follow the courses by [Stewart Lynch](https://twitter.com/StewartLynch), fully developed with SwiftUI.
 
+### API 
+[OpenWeather](https://openweathermap.org/api)
+
+### Library used
+[SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI)
 
 # Contributions
 
