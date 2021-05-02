@@ -9,7 +9,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import SwiftUIRefresh
 
 struct ContentView: View {
     
@@ -61,16 +60,20 @@ struct ContentView: View {
                         }) //Search Button
                     } //TextField
                     
+                    
+                    //MARK: - --
+
                     //Text("Location Status: \(locationManager.statusString)")
                     //Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
-                    VStack(alignment:.leading) {
-                        //List(0..<forecast.daily.count) { index in
-                        List(forecastListVM.forecasts, id: \.day) { day in
-                            ListingView(day: day)
-                        }
-                        .padding(.bottom, 30)
-                        .listStyle(PlainListStyle())
-                    }
+                    ListDataView(forecastListVM: _forecastListVM)
+//                    GeometryReader { geo in
+//                        RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: _forecastListVM)
+////                        RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: forecastListVM)
+//                   }
+                   
+                    
+                    
+
                 }
                 .padding(.horizontal)
                 .navigationTitle("DZWeather")
@@ -99,6 +102,7 @@ struct ContentView: View {
                         } label: {
                             SFSymbols.setting
                         }
+                        .disabled(true)
                         
                     }
                 }

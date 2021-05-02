@@ -26,6 +26,8 @@
 		BF3577FC261DB34300F445E9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3577FB261DB34300F445E9 /* LoadingView.swift */; };
 		BF357801261DCCD600F445E9 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */; };
 		BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */; };
+		BF567BA32631D19E0019FCF5 /* ListDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF567BA22631D19E0019FCF5 /* ListDataView.swift */; };
+		BF6107692631D3AC00FF485E /* RefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6107682631D3AC00FF485E /* RefreshScrollView.swift */; };
 		BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */; };
 		BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */; };
 		BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5DD261EF01300F3889A /* ListingView.swift */; };
@@ -76,6 +78,8 @@
 		BF3577FB261DB34300F445E9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastListViewModel.swift; sourceTree = "<group>"; };
+		BF567BA22631D19E0019FCF5 /* ListDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataView.swift; sourceTree = "<group>"; };
+		BF6107682631D3AC00FF485E /* RefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshScrollView.swift; sourceTree = "<group>"; };
 		BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDemo.swift; sourceTree = "<group>"; };
 		BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCombine.swift; sourceTree = "<group>"; };
 		BFB0A5DD261EF01300F3889A /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
@@ -186,10 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				BF29E875260DD9470084C699 /* ContentView.swift */,
-				BF3577FB261DB34300F445E9 /* LoadingView.swift */,
+				BF567BA22631D19E0019FCF5 /* ListDataView.swift */,
 				BFB0A5DD261EF01300F3889A /* ListingView.swift */,
 				BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */,
 				BF1AFC79262EFCC200881F8D /* SettingsView.swift */,
+				BF3577FB261DB34300F445E9 /* LoadingView.swift */,
+				BF6107682631D3AC00FF485E /* RefreshScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,12 +349,14 @@
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
 				BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */,
 				BF357801261DCCD600F445E9 /* UIApplication+Extension.swift in Sources */,
+				BF6107692631D3AC00FF485E /* RefreshScrollView.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
 				BF1AFC20262D4A1400881F8D /* Stash.xcdatamodeld in Sources */,
 				BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */,
 				BF29E8AA260DD9F30084C699 /* WeatherData.swift in Sources */,
 				BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */,
 				BF1AFC7A262EFCC200881F8D /* SettingsView.swift in Sources */,
+				BF567BA32631D19E0019FCF5 /* ListDataView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +526,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"StewartWeather/Preview Content\"";
-				DEVELOPMENT_TEAM = 9T3DK8DFL5;
+				DEVELOPMENT_TEAM = N492VC6PS9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StewartWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -539,7 +547,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"StewartWeather/Preview Content\"";
-				DEVELOPMENT_TEAM = 9T3DK8DFL5;
+				DEVELOPMENT_TEAM = N492VC6PS9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StewartWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -19,7 +19,7 @@ struct ListingView: View {
                 WebImage(url: day.weatherIconUrl)
                     .resizable()
                     .placeholder {
-                        SFSymbols.load
+                        ProgressView()
                     }
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 80, height: 80)

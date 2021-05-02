@@ -6,7 +6,7 @@ public class APIService {
     public static let shared = APIService()
     
     public enum APIError: Error {
-        case error(_ errorString: String)
+        case error(_ errorString: String) //Associated Values
     }
     
     public func getJSON<T: Decodable>(urlString: String,

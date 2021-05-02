@@ -21,9 +21,9 @@ public class APIServiceCombine {
         }
         
         let request = URLRequest(url: url)
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = dateDecodingStrategy
-                    decoder.keyDecodingStrategy = keyDecodingStrategy
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = dateDecodingStrategy
+        decoder.keyDecodingStrategy = keyDecodingStrategy
         //MARK: - With Combine Framework
         URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
@@ -47,34 +47,34 @@ public class APIServiceCombine {
         
         
         //MARK: - API Service Without Combine
-
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            if let err = error {
-//                completion(.failure(.error("Error: \(err.localizedDescription)")))
-//                return
-//            }
-//
-//
-//            guard let data = data else {
-//                completion(.failure(.error(NSLocalizedString("Error: Data us corrupt.", comment: ""))))
-//                return
-//            }
-//
-//            let decoder = JSONDecoder()
-//            decoder.dateDecodingStrategy = dateDecodingStrategy
-//            decoder.keyDecodingStrategy = keyDecodingStrategy
-//
-//
-//            do {
-//                let decodedData = try decoder.decode(T.self, from: data)
-//                completion(.success(decodedData))
-//                return
-//            } catch let decodingError {
-//                completion(.failure(APIError.error("Error: \(decodingError.localizedDescription)")))
-//                return
-//            }
-//
-//        }.resume()
+        
+        //        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        //            if let err = error {
+        //                completion(.failure(.error("Error: \(err.localizedDescription)")))
+        //                return
+        //            }
+        //
+        //
+        //            guard let data = data else {
+        //                completion(.failure(.error(NSLocalizedString("Error: Data us corrupt.", comment: ""))))
+        //                return
+        //            }
+        //
+        //            let decoder = JSONDecoder()
+        //            decoder.dateDecodingStrategy = dateDecodingStrategy
+        //            decoder.keyDecodingStrategy = keyDecodingStrategy
+        //
+        //
+        //            do {
+        //                let decodedData = try decoder.decode(T.self, from: data)
+        //                completion(.success(decodedData))
+        //                return
+        //            } catch let decodingError {
+        //                completion(.failure(APIError.error("Error: \(decodingError.localizedDescription)")))
+        //                return
+        //            }
+        //
+        //        }.resume()
         
     }
 }

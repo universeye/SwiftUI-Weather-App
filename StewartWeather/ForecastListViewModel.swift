@@ -79,9 +79,9 @@ class ForecastListViewModel: ObservableObject {
                 
                 if let lat = placemarks?.first?.location?.coordinate.latitude,
                    let lon = placemarks?.first?.location?.coordinate.longitude {
-                    apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)",dateDecodingStrategy: .secondsSince1970) { (result: Result<WeatherData, APIServiceCombine.APIError>) in
+                    apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)",dateDecodingStrategy: .secondsSince1970) { [weak self] (result: Result<WeatherData, APIServiceCombine.APIError>) in
                         
-                        
+                        guard let self = self else { return }
                         
                         switch result {
                         case .success(let forecast):
@@ -112,8 +112,8 @@ class ForecastListViewModel: ObservableObject {
         forecasts = [] //clear data array
         isLoading = true //show loading view
         let apiService = APIServiceCombine.shared
-        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)") { (result: Result<WeatherData, APIServiceCombine.APIError>) in
-            
+        apiService.getJSON(urlString: "https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=current,minutely,hourly,alerts&appid=64e55479deb9cc0b215e611a0a14b40f&lat=\(lat)&lon=\(lon)") { [weak self] (result: Result<WeatherData, APIServiceCombine.APIError>) in
+            guard let self = self else { return }
             switch result  {
             
             case .success(let forecast):

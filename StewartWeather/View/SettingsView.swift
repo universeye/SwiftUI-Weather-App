@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var isShowGreeting = false
+    @AppStorage("showGreeting") private var isShowGreeting = false
     
     var body: some View {
         NavigationView {
