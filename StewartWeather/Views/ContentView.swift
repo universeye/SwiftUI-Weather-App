@@ -68,7 +68,7 @@ struct ContentView: View {
                     ListDataView(forecastListVM: _forecastListVM)
 //                    GeometryReader { geo in
 //                        RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: _forecastListVM)
-////                        RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: forecastListVM)
+//                       RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: forecastListVM)
 //                   }
                    
                     

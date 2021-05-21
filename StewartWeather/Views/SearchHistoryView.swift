@@ -88,8 +88,6 @@ struct SearchHistoryView: View {
 
 
 //MARK: - Preview
-
-
 struct SearchHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         SearchHistoryView()
