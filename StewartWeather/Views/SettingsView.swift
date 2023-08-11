@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
-    @AppStorage("showGreeting") private var isShowGreeting = false
+    @EnvironmentObject var forecastListVM: ForecastListViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
-            VStack {
-                Toggle("Show Greeting", isOn: $isShowGreeting)
-                    .padding()
-                List {
-                    if isShowGreeting {
-                        ForEach(0 ..< 5) { index in
-                            Text("haha: \(index)")
-                        }
+            Form {
+                Section(header: Text("General"), footer: Text("Version 0.01")) {
+                    Picker(selection: $forecastListVM.system, label: Text("Units")) {
+                        Text("°C").tag(0)
+                        Text("°F").tag(1)
                     }
+                    .pickerStyle(.menu)
+                    .frame(maxWidth: 320)
                 }
-                .listStyle(PlainListStyle())
-                .navigationTitle("Settings")
+                
+            }
+            .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        SFSymbols.xmark.bold()
+                    }) // Location Button
+                }
             }
         }
     }
@@ -33,5 +41,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(ForecastListViewModel())
     }
 }

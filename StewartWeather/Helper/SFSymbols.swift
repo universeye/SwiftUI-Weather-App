@@ -10,10 +10,10 @@ import SwiftUI
 
 enum SFSymbols: String, View {
     
-    case magnifier = "magnifyingglass.circle.fill"
+    case magnifier = "magnifyingglass"
     case load = "slowmo"
     case hourGlass = "hourglass"
-    case xmark = "xmark.circle"
+    case xmark = "xmark"
     case location = "location.fill"
     case history = "clock.arrow.circlepath"
     case add = "plus"

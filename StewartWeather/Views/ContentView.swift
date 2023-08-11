@@ -29,20 +29,19 @@ struct ContentView: View {
                     HStack {
                         TextField("Enter Location", text: $forecastListVM.location,
                                   onCommit: {
-                                    //print("foreCastListVM.location is \(forecastListVM.location)")
-                                    saveToCoreData(newCity: forecastListVM.location)
-                                    forecastListVM.getWeatherForecast()
-                                  })
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            .overlay ( //delete textField icon
-                                Button(action: {
-                                    forecastListVM.location = ""
-                                    forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
-                                }) {
-                                    SFSymbols.xmark
-                                        .foregroundColor(.gray)
-                                }
+                            //print("foreCastListVM.location is \(forecastListVM.location)")
+                            saveToCoreData(newCity: forecastListVM.location)
+                            forecastListVM.getWeatherForecast()
+                        })
+                        
+                        .overlay ( //delete textField icon
+                            Button(action: {
+                                forecastListVM.location = ""
+                                forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
+                            }) {
+                                SFSymbols.xmark
+                                    .foregroundColor(.gray)
+                            }
                                 .padding(.horizontal),alignment: .trailing)
                         
                         Button(action: {
@@ -60,32 +59,17 @@ struct ContentView: View {
                         }) //Search Button
                     } //TextField
                     
-                    
-                    //MARK: - --
-
-                    //Text("Location Status: \(locationManager.statusString)")
-                    //Text("\(locationManager.lastLocation?.coordinate.latitude ?? 0)")
+                    .padding()
+                    .background(.yellow.gradient)
+                    .cornerRadius(10)
+                    .frame(height: 80)
                     ListDataView(forecastListVM: _forecastListVM)
-//                    GeometryReader { geo in
-//                        RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: _forecastListVM)
-//                       RefreshScrollView(width: geo.size.width, height: geo.size.height, forecastListVM: forecastListVM)
-//                   }
-                   
-                    
-                    
-
                 }
+                .ignoresSafeArea(edges: .bottom)
                 .padding(.horizontal)
-                .navigationTitle("DZWeather")
+                .navigationTitle("SkySeek")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            print("show search history")
-                            activeSheet = .searchHistory
-                            
-                        }, label: {
-                            SFSymbols.history
-                        }) // Search History Button
                         Button(action: {
                             //Get Location Action
                             locationManager.getCurrent()
@@ -98,34 +82,34 @@ struct ContentView: View {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         Button {
                             activeSheet = .setting
-                            
                         } label: {
                             SFSymbols.setting
                         }
-                        .disabled(true)
+                        Button(action: {
+                            print("show search history")
+                            activeSheet = .searchHistory
+                            
+                        }, label: {
+                            SFSymbols.history
+                        }) // Search History Button
                         
                     }
                 }
                 .alert(item: $forecastListVM.appError2) { appAlert in
                     Alert(title: Text("Alert"),
                           message: Text(
-                            """
+                                """
                                 \(appAlert.errorString)
                                 Please try again later
                                 """
                           ))
                 }
             }
-            VStack {
-                Spacer()
-                Picker(selection: $forecastListVM.system, label: Text("System")) {
-                    Text("°C").tag(0)
-                    Text("°F").tag(1)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .frame(maxWidth: 320)
-                //.padding(.bottom, 20)
-            } //Picker
+//            VStack {
+//                Spacer()
+//
+//                //.padding(.bottom, 20)
+//            } //Picker
             if forecastListVM.isLoading {
                 LoadingView()
             }
@@ -136,8 +120,11 @@ struct ContentView: View {
                 SearchHistoryView()
                     .environment(\.managedObjectContext, self.managedObjectContext)
                     .environmentObject(self.forecastListVM)
+                    .presentationDetents([.medium])
             case .setting:
                 SettingsView()
+                    .environmentObject(self.forecastListVM)
+                    .presentationDetents([.medium])
             }
         }
     }
@@ -171,5 +158,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, PersistanceController.shared.container.viewContext)
+            .environmentObject(ForecastListViewModel())
     }
 }

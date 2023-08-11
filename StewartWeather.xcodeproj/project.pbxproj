@@ -28,7 +28,7 @@
 		BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */; };
 		BF567BA32631D19E0019FCF5 /* ListDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF567BA22631D19E0019FCF5 /* ListDataView.swift */; };
 		BF6107692631D3AC00FF485E /* RefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6107682631D3AC00FF485E /* RefreshScrollView.swift */; };
-		BF6B04902657C574002A9B4A /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B048F2657C574002A9B4A /* APIKeys.swift */; };
+		BF74FB012A8607D6001F5555 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB002A8607D6001F5555 /* APIKeys.swift */; };
 		BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */; };
 		BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */; };
 		BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5DD261EF01300F3889A /* ListingView.swift */; };
@@ -81,7 +81,7 @@
 		BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastListViewModel.swift; sourceTree = "<group>"; };
 		BF567BA22631D19E0019FCF5 /* ListDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataView.swift; sourceTree = "<group>"; };
 		BF6107682631D3AC00FF485E /* RefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshScrollView.swift; sourceTree = "<group>"; };
-		BF6B048F2657C574002A9B4A /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		BF74FB002A8607D6001F5555 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDemo.swift; sourceTree = "<group>"; };
 		BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCombine.swift; sourceTree = "<group>"; };
 		BFB0A5DD261EF01300F3889A /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
@@ -139,25 +139,17 @@
 		BF29E870260DD9470084C699 /* StewartWeather */ = {
 			isa = PBXGroup;
 			children = (
-				BF29E871260DD9470084C699 /* AppDelegate.swift */,
-				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
-				BF3577F3261DABD400F445E9 /* AppError.swift */,
-				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
-				BFB0A5E2261EF28E00F3889A /* LocationManager.swift */,
-				BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */,
-				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
-				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
+				BF74FB032A860909001F5555 /* Main */,
+				BF74FB042A860910001F5555 /* Helper */,
+				BF74FB022A8608FD001F5555 /* Extensions */,
+				BF74FB052A860BF4001F5555 /* ViewModel */,
 				BFE12CE62619A2930071AB7E /* Views */,
-				BF29E8A9260DD9F30084C699 /* WeatherData.swift */,
-				BF1AFC24262D59F400881F8D /* PersistanceController.swift */,
-				BF29E8A4260DD9A90084C699 /* APIService.swift */,
-				BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */,
+				BF74FB062A860C0F001F5555 /* Model */,
 				BF29E877260DD94A0084C699 /* Assets.xcassets */,
 				BF29E87C260DD94A0084C699 /* LaunchScreen.storyboard */,
 				BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */,
 				BF1AFC1E262D4A1400881F8D /* Stash.xcdatamodeld */,
 				BF29E87F260DD94A0084C699 /* Info.plist */,
-				BF6B048E2657C560002A9B4A /* APIKeys */,
 				BF29E879260DD94A0084C699 /* Preview Content */,
 			);
 			path = StewartWeather;
@@ -189,12 +181,52 @@
 			path = StewartWeatherUITests;
 			sourceTree = "<group>";
 		};
-		BF6B048E2657C560002A9B4A /* APIKeys */ = {
+		BF74FB022A8608FD001F5555 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BF6B048F2657C574002A9B4A /* APIKeys.swift */,
+				BF357800261DCCD600F445E9 /* UIApplication+Extension.swift */,
 			);
-			path = APIKeys;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF74FB032A860909001F5555 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BF29E871260DD9470084C699 /* AppDelegate.swift */,
+				BF29E873260DD9470084C699 /* SceneDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BF74FB042A860910001F5555 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BF3577F3261DABD400F445E9 /* AppError.swift */,
+				BFE12CE12618FCD80071AB7E /* SFSymbols.swift */,
+				BFB0A5E2261EF28E00F3889A /* LocationManager.swift */,
+				BF74FB002A8607D6001F5555 /* APIKeys.swift */,
+				BF1AFC24262D59F400881F8D /* PersistanceController.swift */,
+				BF29E8A4260DD9A90084C699 /* APIService.swift */,
+				BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		BF74FB052A860BF4001F5555 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BFE12CE72619A2AD0071AB7E /* ForecastViewModel.swift */,
+				BF471E41261C5B7C00A1FEC3 /* ForecastListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BF74FB062A860C0F001F5555 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF29E8A9260DD9F30084C699 /* WeatherData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BFE12CE62619A2930071AB7E /* Views */ = {
@@ -347,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6B04902657C574002A9B4A /* APIKeys.swift in Sources */,
+				BF74FB012A8607D6001F5555 /* APIKeys.swift in Sources */,
 				BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */,
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
@@ -466,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -521,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

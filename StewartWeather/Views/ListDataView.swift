@@ -17,7 +17,7 @@ struct ListDataView: View {
             List(forecastListVM.forecasts, id: \.day) { day in
                 ListingView(day: day)
             }
-            .padding(.bottom, 30)
+            .padding(.bottom, 4)
             .listStyle(PlainListStyle())
         }
     }
