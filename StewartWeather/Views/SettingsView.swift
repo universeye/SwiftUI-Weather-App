@@ -15,7 +15,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("General"), footer: Text("Version 0.01")) {
-                    Picker(selection: $forecastListVM.system, label: Text("Units")) {
+                    Picker(selection: $forecastListVM.system, label: Text("Temperature units")) {
                         Text("°C").tag(0)
                         Text("°F").tag(1)
                     }

@@ -25,7 +25,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                VStack {
+                VStack(spacing: 0) {
                     HStack {
                         TextField("Enter Location", text: $forecastListVM.location,
                                   onCommit: {
@@ -58,16 +58,18 @@ struct ContentView: View {
                                 .font(.title2)
                         }) //Search Button
                     } //TextField
-                    
                     .padding()
                     .background(.yellow.gradient)
                     .cornerRadius(10)
                     .frame(height: 80)
+                    .padding(.horizontal)
                     ListDataView(forecastListVM: _forecastListVM)
+                        .cornerRadius(10)
                 }
                 .ignoresSafeArea(edges: .bottom)
-                .padding(.horizontal)
+//                .padding(.horizontal)
                 .navigationTitle("SkySeek")
+                .background(Color(uiColor: .secondarySystemBackground))
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {
@@ -105,11 +107,6 @@ struct ContentView: View {
                           ))
                 }
             }
-//            VStack {
-//                Spacer()
-//
-//                //.padding(.bottom, 20)
-//            } //Picker
             if forecastListVM.isLoading {
                 LoadingView()
             }

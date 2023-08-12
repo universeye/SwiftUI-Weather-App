@@ -12,19 +12,21 @@ struct ListDataView: View {
     @EnvironmentObject var forecastListVM: ForecastListViewModel
     
     var body: some View {
-        VStack(alignment:.leading) {
+//        VStack(alignment:.leading) {
             //List(0..<forecast.daily.count) { index in
             List(forecastListVM.forecasts, id: \.day) { day in
                 ListingView(day: day)
             }
-            .padding(.bottom, 4)
-            .listStyle(PlainListStyle())
-        }
+            .listStyle(.plain)
+//            .cornerRadius(10)
+            .padding(.bottom, 16)
+//        }
     }
 }
-//
-//struct ListData_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ListDataView()
-//    }
-//}
+
+struct ListData_Previews: PreviewProvider {
+    static var previews: some View {
+        ListDataView()
+            .environmentObject(ForecastListViewModel())
+    }
+}
