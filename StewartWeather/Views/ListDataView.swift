@@ -12,15 +12,15 @@ struct ListDataView: View {
     @EnvironmentObject var forecastListVM: ForecastListViewModel
     
     var body: some View {
-//        VStack(alignment:.leading) {
-            //List(0..<forecast.daily.count) { index in
-            List(forecastListVM.forecasts, id: \.day) { day in
-                ListingView(day: day)
-            }
-            .listStyle(.plain)
-//            .cornerRadius(10)
-            .padding(.bottom, 16)
-//        }
+        List(forecastListVM.forecasts, id: \.day) { day in
+            ListingView(day: day)
+                .listRowSeparator(.hidden)
+                
+        }
+        .scrollContentBackground(.hidden)
+//        .listStyle(.plain)
+//        .background(Color(uiColor: .clear))
+        
     }
 }
 

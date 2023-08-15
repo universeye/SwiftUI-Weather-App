@@ -11,6 +11,7 @@
 		BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC24262D59F400881F8D /* PersistanceController.swift */; };
 		BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */; };
 		BF1AFC7A262EFCC200881F8D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1AFC79262EFCC200881F8D /* SettingsView.swift */; };
+		BF1BD8002A8B1AE300D6E4C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1BD7FF2A8B1AE300D6E4C7 /* MainView.swift */; };
 		BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E871260DD9470084C699 /* AppDelegate.swift */; };
 		BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E873260DD9470084C699 /* SceneDelegate.swift */; };
 		BF29E876260DD9470084C699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E875260DD9470084C699 /* ContentView.swift */; };
@@ -29,6 +30,16 @@
 		BF567BA32631D19E0019FCF5 /* ListDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF567BA22631D19E0019FCF5 /* ListDataView.swift */; };
 		BF6107692631D3AC00FF485E /* RefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6107682631D3AC00FF485E /* RefreshScrollView.swift */; };
 		BF74FB012A8607D6001F5555 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB002A8607D6001F5555 /* APIKeys.swift */; };
+		BF74FB1C2A8A68F0001F5555 /* DismissKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB1B2A8A68F0001F5555 /* DismissKeyboardButton.swift */; };
+		BF74FB1E2A8A8DE0001F5555 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB1D2A8A8DE0001F5555 /* EmptyView.swift */; };
+		BF74FB222A8A9B12001F5555 /* GlassMorphismCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB212A8A9B12001F5555 /* GlassMorphismCardView.swift */; };
+		BF74FB2A2A8A9B26001F5555 /* UIVisualEffectView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB272A8A9B26001F5555 /* UIVisualEffectView+Ext.swift */; };
+		BF74FB2B2A8A9B26001F5555 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB262A8A9B26001F5555 /* CardContentView.swift */; };
+		BF74FB2C2A8A9B26001F5555 /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB242A8A9B26001F5555 /* NSObject+Ext.swift */; };
+		BF74FB2D2A8A9B26001F5555 /* GlassMorphismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB232A8A9B26001F5555 /* GlassMorphismView.swift */; };
+		BF74FB2E2A8A9B26001F5555 /* CustumModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB252A8A9B26001F5555 /* CustumModifier.swift */; };
+		BF74FB2F2A8A9B26001F5555 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB282A8A9B26001F5555 /* UIView+Ext.swift */; };
+		BF74FB302A8A9B26001F5555 /* CustumBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74FB292A8A9B26001F5555 /* CustumBlurView.swift */; };
 		BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */; };
 		BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */; };
 		BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0A5DD261EF01300F3889A /* ListingView.swift */; };
@@ -59,6 +70,7 @@
 		BF1AFC24262D59F400881F8D /* PersistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceController.swift; sourceTree = "<group>"; };
 		BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		BF1AFC79262EFCC200881F8D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BF1BD7FF2A8B1AE300D6E4C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BF29E86E260DD9470084C699 /* StewartWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StewartWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF29E871260DD9470084C699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF29E873260DD9470084C699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +94,16 @@
 		BF567BA22631D19E0019FCF5 /* ListDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataView.swift; sourceTree = "<group>"; };
 		BF6107682631D3AC00FF485E /* RefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshScrollView.swift; sourceTree = "<group>"; };
 		BF74FB002A8607D6001F5555 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		BF74FB1B2A8A68F0001F5555 /* DismissKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboardButton.swift; sourceTree = "<group>"; };
+		BF74FB1D2A8A8DE0001F5555 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		BF74FB212A8A9B12001F5555 /* GlassMorphismCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassMorphismCardView.swift; sourceTree = "<group>"; };
+		BF74FB232A8A9B26001F5555 /* GlassMorphismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassMorphismView.swift; sourceTree = "<group>"; };
+		BF74FB242A8A9B26001F5555 /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
+		BF74FB252A8A9B26001F5555 /* CustumModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumModifier.swift; sourceTree = "<group>"; };
+		BF74FB262A8A9B26001F5555 /* CardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
+		BF74FB272A8A9B26001F5555 /* UIVisualEffectView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVisualEffectView+Ext.swift"; sourceTree = "<group>"; };
+		BF74FB282A8A9B26001F5555 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		BF74FB292A8A9B26001F5555 /* CustumBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumBlurView.swift; sourceTree = "<group>"; };
 		BFB0A5D0261EDBE100F3889A /* CombineDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineDemo.swift; sourceTree = "<group>"; };
 		BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCombine.swift; sourceTree = "<group>"; };
 		BFB0A5DD261EF01300F3889A /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
@@ -208,6 +230,7 @@
 				BF1AFC24262D59F400881F8D /* PersistanceController.swift */,
 				BF29E8A4260DD9A90084C699 /* APIService.swift */,
 				BFB0A5D5261EDD9B00F3889A /* APIServiceCombine.swift */,
+				BF74FB1B2A8A68F0001F5555 /* DismissKeyboardButton.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -232,7 +255,17 @@
 		BFE12CE62619A2930071AB7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF1BD7FF2A8B1AE300D6E4C7 /* MainView.swift */,
 				BF29E875260DD9470084C699 /* ContentView.swift */,
+				BF74FB212A8A9B12001F5555 /* GlassMorphismCardView.swift */,
+				BF74FB262A8A9B26001F5555 /* CardContentView.swift */,
+				BF74FB292A8A9B26001F5555 /* CustumBlurView.swift */,
+				BF74FB252A8A9B26001F5555 /* CustumModifier.swift */,
+				BF74FB232A8A9B26001F5555 /* GlassMorphismView.swift */,
+				BF74FB242A8A9B26001F5555 /* NSObject+Ext.swift */,
+				BF74FB282A8A9B26001F5555 /* UIView+Ext.swift */,
+				BF74FB272A8A9B26001F5555 /* UIVisualEffectView+Ext.swift */,
+				BF74FB1D2A8A8DE0001F5555 /* EmptyView.swift */,
 				BF567BA22631D19E0019FCF5 /* ListDataView.swift */,
 				BFB0A5DD261EF01300F3889A /* ListingView.swift */,
 				BF1AFC29262D67D500881F8D /* SearchHistoryView.swift */,
@@ -379,26 +412,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF74FB302A8A9B26001F5555 /* CustumBlurView.swift in Sources */,
+				BF74FB1C2A8A68F0001F5555 /* DismissKeyboardButton.swift in Sources */,
 				BF74FB012A8607D6001F5555 /* APIKeys.swift in Sources */,
 				BF1AFC25262D59F400881F8D /* PersistanceController.swift in Sources */,
 				BF29E872260DD9470084C699 /* AppDelegate.swift in Sources */,
+				BF74FB1E2A8A8DE0001F5555 /* EmptyView.swift in Sources */,
 				BF29E874260DD9470084C699 /* SceneDelegate.swift in Sources */,
+				BF1BD8002A8B1AE300D6E4C7 /* MainView.swift in Sources */,
+				BF74FB2D2A8A9B26001F5555 /* GlassMorphismView.swift in Sources */,
+				BF74FB2E2A8A9B26001F5555 /* CustumModifier.swift in Sources */,
+				BF74FB222A8A9B12001F5555 /* GlassMorphismCardView.swift in Sources */,
 				BFB0A5E3261EF28E00F3889A /* LocationManager.swift in Sources */,
 				BFB0A5D1261EDBE100F3889A /* CombineDemo.swift in Sources */,
 				BFB0A5DE261EF01300F3889A /* ListingView.swift in Sources */,
 				BF3577F4261DABD400F445E9 /* AppError.swift in Sources */,
+				BF74FB2F2A8A9B26001F5555 /* UIView+Ext.swift in Sources */,
 				BF3577FC261DB34300F445E9 /* LoadingView.swift in Sources */,
 				BFE12CE22618FCD80071AB7E /* SFSymbols.swift in Sources */,
 				BFE12CE82619A2AD0071AB7E /* ForecastViewModel.swift in Sources */,
 				BF29E8A5260DD9A90084C699 /* APIService.swift in Sources */,
+				BF74FB2A2A8A9B26001F5555 /* UIVisualEffectView+Ext.swift in Sources */,
 				BF471E42261C5B7C00A1FEC3 /* ForecastListViewModel.swift in Sources */,
 				BF357801261DCCD600F445E9 /* UIApplication+Extension.swift in Sources */,
 				BF6107692631D3AC00FF485E /* RefreshScrollView.swift in Sources */,
 				BF29E876260DD9470084C699 /* ContentView.swift in Sources */,
 				BF1AFC20262D4A1400881F8D /* Stash.xcdatamodeld in Sources */,
 				BFB0A5D6261EDD9B00F3889A /* APIServiceCombine.swift in Sources */,
+				BF74FB2B2A8A9B26001F5555 /* CardContentView.swift in Sources */,
 				BF29E8AA260DD9F30084C699 /* WeatherData.swift in Sources */,
 				BF1AFC2A262D67D500881F8D /* SearchHistoryView.swift in Sources */,
+				BF74FB2C2A8A9B26001F5555 /* NSObject+Ext.swift in Sources */,
 				BF1AFC7A262EFCC200881F8D /* SettingsView.swift in Sources */,
 				BF567BA32631D19E0019FCF5 /* ListDataView.swift in Sources */,
 			);

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Indonesia-iphone-xs-max.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

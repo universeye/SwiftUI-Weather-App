@@ -1,14 +1,14 @@
 //
-//  ListingView.swift
-//  StewartWeather
+//  CardContentView.swift
+//  LogoDemo3
 //
-//  Created by Terry Kuo on 2021/4/8.
+//  Created by Terry Kuo on 2023/8/13.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ListingView: View {
+struct CardContentView: View {
     
     var day = ForecastListViewModel().forecasts[0]
     
@@ -41,19 +41,20 @@ struct ListingView: View {
                     .minimumScaleFactor(0.7)
                     Text(day.humidity)
                         .font(.callout)
-                        .foregroundColor(Color(uiColor: .systemGray))
+                        .foregroundColor(Color(uiColor: .white))
                 }
             }
         }
-        .padding()
-        .background(.gray.gradient)
-        .cornerRadius(10)
+        .padding(20)
+        .padding(.vertical, 10)
+//        .blendMode(.overlay)
+//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
-struct ListingView_Previews: PreviewProvider {
+struct CardContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ListDataView()
-            .environmentObject(ForecastListViewModel())
+        GlassMorphismView()
+            .preferredColorScheme(.dark)
     }
 }

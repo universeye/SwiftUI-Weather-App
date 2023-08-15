@@ -19,12 +19,27 @@ struct ContentView: View {
     
     @EnvironmentObject var forecastListVM: ForecastListViewModel
     @StateObject private var locationManager = LocationManager()  //Location
-    @State var activeSheet: ForecastViewModel.ActiveSheet? //searchHistory, setting
+    @State private var activeSheet: ForecastViewModel.ActiveSheet? //searchHistory, setting
+    @State private var isUsingKB: Bool = false
+    
+    @State private var blurView: UIVisualEffectView = .init()
+    @State private var defaultBlurRadius: CGFloat = 10
+    @State private var defaultSaturationAmount: CGFloat = 1.8
+    @State private var isShow: Bool = false
+    
+    init() {
+        UINavigationBar.appearance().tintColor = .systemGreen
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.label]
+    }
     
     //MARK: - Body
     var body: some View {
-        ZStack {
-            NavigationView {
+        NavigationView {
+            ZStack {
+                
+                
+                
                 VStack(spacing: 0) {
                     HStack {
                         TextField("Enter Location", text: $forecastListVM.location,
@@ -32,15 +47,17 @@ struct ContentView: View {
                             //print("foreCastListVM.location is \(forecastListVM.location)")
                             saveToCoreData(newCity: forecastListVM.location)
                             forecastListVM.getWeatherForecast()
+                            
                         })
-                        
+                        .tint(Color(uiColor: .secondaryLabel))
+                        .foregroundColor(.black)
                         .overlay ( //delete textField icon
                             Button(action: {
                                 forecastListVM.location = ""
                                 forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
                             }) {
                                 SFSymbols.xmark
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(Color(uiColor: .systemGray))
                             }
                                 .padding(.horizontal),alignment: .trailing)
                         
@@ -56,29 +73,25 @@ struct ContentView: View {
                         }, label: {
                             SFSymbols.magnifier
                                 .font(.title2)
+                                .foregroundColor(.black)
                         }) //Search Button
                     } //TextField
-                    .padding()
-                    .background(.yellow.gradient)
-                    .cornerRadius(10)
-                    .frame(height: 80)
+                    .padding(12)
+                    .background(Color("button").gradient)
+                    .cornerRadius(15)
                     .padding(.horizontal)
-                    ListDataView(forecastListVM: _forecastListVM)
-                        .cornerRadius(10)
+                    
+                    if forecastListVM.forecasts.isEmpty {
+                        SSEmptyView()
+                            .frame(maxHeight: .infinity)
+                    } else {
+                        listData()
+                    }
                 }
-                .ignoresSafeArea(edges: .bottom)
-//                .padding(.horizontal)
                 .navigationTitle("SkySeek")
-                .background(Color(uiColor: .secondarySystemBackground))
                 .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            //Get Location Action
-                            locationManager.getCurrent()
-                            forecastListVM.getWeatherForecastWithLatLon(lat: locationManager.latt ?? 0, lon: locationManager.lonn ?? 0)
-                        }, label: {
-                            SFSymbols.location
-                        }) // Location Button
+                    ToolbarItemGroup(placement: .keyboard) {
+                        DismissKeyboardButton()
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -106,11 +119,69 @@ struct ContentView: View {
                                 """
                           ))
                 }
+                VStack {
+                    Spacer()
+                    HStack(spacing: 16) {
+                        Button {
+                            //Get Location Action
+                            locationManager.getCurrent()
+                            forecastListVM.getWeatherForecastWithLatLon(lat: locationManager.latt ?? 0, lon: locationManager.lonn ?? 0)
+                            forecastListVM.location = ""
+                        } label: {
+                            HStack {
+                                SFSymbols.location
+                                Text("Current Location")
+                                
+                            }
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Color("button").gradient)
+                            .cornerRadius(15)
+                            .shadow(radius: 2)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.black.opacity(0.2), lineWidth: 2)
+                            }
+                        }
+                        Button {
+                            //Get Location Action
+                            saveToCoreData(newCity: forecastListVM.location)
+                            forecastListVM.getWeatherForecast()
+                        } label: {
+                            HStack {
+                                SFSymbols.magnifier
+                                Text("Search")
+                                
+                            }
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Color("button").gradient)
+                            .cornerRadius(15)
+                            .shadow(radius: 2)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.black.opacity(0.2), lineWidth: 2)
+                            }
+                        }
+                    }
+                    .padding(.top)
+                    .padding(.bottom, 8)
+                }
+                
+                //            if forecastListVM.isLoading {
+                //                LoadingView()
+                //            }
             }
-            if forecastListVM.isLoading {
-                LoadingView()
-            }
+            .background(
+                Image("bgimage")
+                    .resizable()
+                    .scaleEffect(1.2)
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .opacity(0.7))
+            
         }
+        .accentColor(Color("button"))
         .sheet(item: $activeSheet) { (item) in
             switch item {
             case .searchHistory:
@@ -146,6 +217,27 @@ struct ContentView: View {
                 persistenceController.save()
             }
         }
+    }
+    
+    @ViewBuilder
+    func listData() -> some View {
+        List(forecastListVM.forecasts, id: \.day) { day in
+            GlassMorphismCardView(blurView: $blurView, defaultBlurRadius: $defaultBlurRadius, defaultSaturationAmount: $defaultSaturationAmount, isShow: $forecastListVM.isLoading, day: day)
+//                .onChange(of: forecastListVM.isLoading) { newValue in
+//                    blurView.gaussianBlurRadius = (!forecastListVM.isLoading ? 10 : defaultBlurRadius)
+//                    blurView.saturationAmount = (!forecastListVM.isLoading ? 1.8 : defaultSaturationAmount)
+//                }
+                .animation(.easeIn(duration: 0.5), value: forecastListVM.isLoading)
+                .listRowBackground(Color(uiColor: .clear))
+        }
+        
+        .refreshable(action: {
+            forecastListVM.getWeatherForecast()
+        })
+        .animation(.easeIn(duration: 0.5), value: forecastListVM.isLoading)
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .scrollDismissesKeyboard(.immediately)
     }
 }
 

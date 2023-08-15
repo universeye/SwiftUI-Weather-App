@@ -76,8 +76,14 @@ struct ForecastViewModel {
     }
     
     var weatherIconUrl: URL {
-        let weatherIconUrlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
-        return URL(string: weatherIconUrlString)!
+        if forecast.weather.count > 0 {
+            let weatherIconUrlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
+            return URL(string: weatherIconUrlString)!
+        } else {
+            return URL(string: "www.apple.com")!
+        }
+        
+        
     }
 
     
