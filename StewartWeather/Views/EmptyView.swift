@@ -13,10 +13,10 @@ struct SSEmptyView: View {
             Image(systemName: "tropicalstorm")
                 .font(.system(size: 100, weight: .heavy))
                 .padding()
-            Text("No weather data")
+            Text("No weather data, type to search!")
                 .font(.headline)
         }
-        .foregroundColor(.gray)
+        .foregroundColor(Color(uiColor: .label))
     }
 }
 

@@ -43,8 +43,13 @@ struct SearchHistoryView: View {
             
             .navigationTitle("Search History")
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button(action: {
+                    }, label: {
+                        Text("Clear all")
+                    })
+                }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    
                     Button(action: {
                         isAlerting = true
                         
@@ -53,6 +58,7 @@ struct SearchHistoryView: View {
                         SFSymbols.add
                     })
                     .disabled(true)
+                   
                     
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()

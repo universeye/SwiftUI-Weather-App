@@ -47,14 +47,15 @@ struct CardContentView: View {
         }
         .padding(20)
         .padding(.vertical, 10)
+        
 //        .blendMode(.overlay)
 //        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
-struct CardContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        GlassMorphismView()
-            .preferredColorScheme(.dark)
-    }
-}
+//struct CardContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GlassMorphismView()
+//            .preferredColorScheme(.dark)
+//    }
+//}

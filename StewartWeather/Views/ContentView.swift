@@ -37,30 +37,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
-                
-                
                 VStack(spacing: 0) {
                     HStack {
-                        TextField("Enter Location", text: $forecastListVM.location,
-                                  onCommit: {
-                            //print("foreCastListVM.location is \(forecastListVM.location)")
-                            saveToCoreData(newCity: forecastListVM.location)
-                            forecastListVM.getWeatherForecast()
-                            
-                        })
-                        .tint(Color(uiColor: .secondaryLabel))
-                        .foregroundColor(.black)
-                        .overlay ( //delete textField icon
-                            Button(action: {
-                                forecastListVM.location = ""
-                                forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
-                            }) {
-                                SFSymbols.xmark
-                                    .foregroundColor(Color(uiColor: .systemGray))
-                            }
-                                .padding(.horizontal),alignment: .trailing)
-                        
                         Button(action: {
                             if forecastListVM.location.isEmpty {
                                 forecastListVM.appError2 = AppError2(errorString: "Please enter a city")
@@ -75,10 +53,35 @@ struct ContentView: View {
                                 .font(.title2)
                                 .foregroundColor(.black)
                         }) //Search Button
+                        TextField("Enter Location", text: $forecastListVM.location,
+                                  onCommit: {
+                            //print("foreCastListVM.location is \(forecastListVM.location)")
+                            saveToCoreData(newCity: forecastListVM.location)
+                            forecastListVM.getWeatherForecast()
+                            
+                        })
+                        .tint(.black)
+                        .foregroundColor(.black)
+                        .overlay ( //delete textField icon
+                                Button(action: {
+                                    forecastListVM.location = ""
+                                    forecastListVM.getWeatherForecast() //so that we can set the storageLocation and set the forecasts array to empty
+                                }) {
+                                    SFSymbols.xmark
+                                        .foregroundColor(Color(uiColor: .systemGray))
+                                }
+                                .padding(.horizontal)
+                                .opacity(forecastListVM.location.isEmpty ? 0 : 1)
+                                .animation(.easeIn(duration: 0.2), value: forecastListVM.location.isEmpty)
+                                ,alignment: .trailing
+                        )
+                                
+                            
                     } //TextField
+                    .submitLabel(.search)
                     .padding(12)
                     .background(Color("button").gradient)
-                    .cornerRadius(15)
+                    .cornerRadius(25)
                     .padding(.horizontal)
                     
                     if forecastListVM.forecasts.isEmpty {
@@ -143,26 +146,33 @@ struct ContentView: View {
                                     .stroke(Color.black.opacity(0.2), lineWidth: 2)
                             }
                         }
-                        Button {
-                            //Get Location Action
-                            saveToCoreData(newCity: forecastListVM.location)
-                            forecastListVM.getWeatherForecast()
-                        } label: {
-                            HStack {
-                                SFSymbols.magnifier
-                                Text("Search")
-                                
+                        .offset(x: forecastListVM.location.isEmpty ? 70 : 0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5), value: forecastListVM.location.isEmpty)
+//                        if !forecastListVM.location.isEmpty {
+                            Button {
+                                //Get Location Action
+                                saveToCoreData(newCity: forecastListVM.location)
+                                forecastListVM.getWeatherForecast()
+                            } label: {
+                                HStack {
+                                    SFSymbols.magnifier
+                                    Text("Search")
+                                    
+                                }
+                                .foregroundColor(.black)
+                                .padding()
+                                .background(Color("button").gradient)
+                                .cornerRadius(15)
+                                .shadow(radius: 2)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.black.opacity(0.2), lineWidth: 2)
+                                }
                             }
-                            .foregroundColor(.black)
-                            .padding()
-                            .background(Color("button").gradient)
-                            .cornerRadius(15)
-                            .shadow(radius: 2)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color.black.opacity(0.2), lineWidth: 2)
-                            }
-                        }
+                            .scaleEffect(forecastListVM.location.isEmpty ? 0.01 : 1)
+                            .opacity(forecastListVM.location.isEmpty ? 0.0001 : 1)
+                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5), value: forecastListVM.location.isEmpty)
+//                        }
                     }
                     .padding(.top)
                     .padding(.bottom, 8)
@@ -188,7 +198,7 @@ struct ContentView: View {
                 SearchHistoryView()
                     .environment(\.managedObjectContext, self.managedObjectContext)
                     .environmentObject(self.forecastListVM)
-                    .presentationDetents([.medium])
+                    .presentationDetents([.medium, .large])
             case .setting:
                 SettingsView()
                     .environmentObject(self.forecastListVM)
@@ -223,14 +233,15 @@ struct ContentView: View {
     func listData() -> some View {
         List(forecastListVM.forecasts, id: \.day) { day in
             GlassMorphismCardView(blurView: $blurView, defaultBlurRadius: $defaultBlurRadius, defaultSaturationAmount: $defaultSaturationAmount, isShow: $forecastListVM.isLoading, day: day)
-//                .onChange(of: forecastListVM.isLoading) { newValue in
-//                    blurView.gaussianBlurRadius = (!forecastListVM.isLoading ? 10 : defaultBlurRadius)
-//                    blurView.saturationAmount = (!forecastListVM.isLoading ? 1.8 : defaultSaturationAmount)
-//                }
+            //                .onChange(of: forecastListVM.isLoading) { newValue in
+            //                    blurView.gaussianBlurRadius = (!forecastListVM.isLoading ? 10 : defaultBlurRadius)
+            //                    blurView.saturationAmount = (!forecastListVM.isLoading ? 1.8 : defaultSaturationAmount)
+            //                }
                 .animation(.easeIn(duration: 0.5), value: forecastListVM.isLoading)
                 .listRowBackground(Color(uiColor: .clear))
+            
         }
-        
+       
         .refreshable(action: {
             forecastListVM.getWeatherForecast()
         })

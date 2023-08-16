@@ -56,6 +56,7 @@ struct GlassMorphismCardView: View {
         }
 //        .shadow(color: .black.opacity(0.15), radius: 5, x: -10, y: 10)
 //        .shadow(color: .black.opacity(0.15), radius: 5, x: 10, y: -10)
+        
         .overlay(content: {
             if forecastListVM.isLoading {
                 CardContentView(day: day)
@@ -66,12 +67,15 @@ struct GlassMorphismCardView: View {
                 CardContentView(day: day)
                     .opacity(1)
                     .animation(.easeIn(duration: 0.5), value: isShow)
+                    
             }
-            
+               
         })
         .frame(height: 140)
         .frame(maxWidth: .infinity)
-    } 
+        
+    }
+    
 }
 
 //struct GlassMorphismCardView_Previews: PreviewProvider {

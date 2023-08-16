@@ -19,7 +19,7 @@ public class APIServiceCombine {
             completion(.failure(.error("Error: Invalid URL")))
             return
         }
-        
+        print(urlString)
         let request = URLRequest(url: url)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = dateDecodingStrategy
